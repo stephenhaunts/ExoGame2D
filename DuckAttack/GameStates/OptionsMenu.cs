@@ -44,6 +44,7 @@ namespace ExoGameEngine.DuckAttack.GameStates
 
         private UIContainer _container;
         private IRenderNode _backToMainMenu;
+        private IRenderNode _soundEffectsOnOff;
 
         public OptionsMenu()
         {
@@ -60,17 +61,29 @@ namespace ExoGameEngine.DuckAttack.GameStates
 
             int startYPosition = 600;
 
+            _soundEffectsOnOff = new CheckBox("SoundEffectsOnOff", new SoundEffectsOnOffHandler())
+            {
+                Width = 500,
+                Height = 70,
+                Location = new Vector2(700, startYPosition),
+                Text = "Sound Effects On/Off",
+                DrawWindowChrome = true
+            };
+
+            startYPosition += 80;
+
             _backToMainMenu = new Button("ExitToMainMenu", new ExitToMainMenuButtonHandler())
             {
-                Width = 400,
+                Width = 500,
                 Height = 70,
-                Location = new Vector2(750, startYPosition),
+                Location = new Vector2(700, startYPosition),
                 Text = "<-- Exit to Main Menu",
                 DrawWindowChrome = true
             };        
 
+            _container.AddControl(_soundEffectsOnOff);
             _container.AddControl(_backToMainMenu);
-          
+
             _scene.AddSpriteToLayer(RenderLayerEnum.LAYER1, _background);
             _scene.AddSpriteToLayer(RenderLayerEnum.LAYER2, _titles);
             _scene.AddSpriteToLayer(RenderLayerEnum.LAYER5, _crosshair);

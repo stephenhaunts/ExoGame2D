@@ -65,9 +65,9 @@ namespace ExoGameEngine.DuckAttack.GameStates
 
             _playGameButton = new Button("PlayGameButton", new NewGameButtonHandler())
             {
-                Width = 400,
+                Width = 500,
                 Height = 70,
-                Location = new Vector2(750, startYPosition),
+                Location = new Vector2(700, startYPosition),
                 Text = "Play Duck Attack",
                 DrawWindowChrome = true
             };
@@ -76,9 +76,9 @@ namespace ExoGameEngine.DuckAttack.GameStates
 
             _optionsButton = new Button("OptionsGameButton", new OptionsButtonHandler())
             {
-                Width = 400,
+                Width = 500,
                 Height = 70,
-                Location = new Vector2(750, startYPosition),
+                Location = new Vector2(700, startYPosition),
                 Text = "Options",
                 DrawWindowChrome = true
             };
@@ -87,9 +87,9 @@ namespace ExoGameEngine.DuckAttack.GameStates
 
             _exitButton = new Button("ExitGameButton", new ExitButtonHandler())
             {
-                Width = 400,
+                Width = 500,
                 Height = 70,
-                Location = new Vector2(750, startYPosition),
+                Location = new Vector2(700, startYPosition),
                 Text = "Exit Game",
                 DrawWindowChrome = true
             };

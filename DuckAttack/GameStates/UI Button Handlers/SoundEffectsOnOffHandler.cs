@@ -21,14 +21,26 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
+using ExoGameEngine.Interfaces;
 using ExoGameEngine.UI;
 
-namespace ExoGameEngine.Interfaces
+namespace ExoGameEngine.DuckAttack.GameStates
 {
-    public interface ICheckBoxHandler
+    public class SoundEffectsOnOffHandler : ICheckBoxHandler
     {
-        void OnMouseClick(UIControlBase checkbox);
-        void OnMouseOver(UIControlBase checkbox);
-        void OnCheck(UIControlBase checkbox);
+        public void OnCheck(UIControlBase checkbox)
+        {
+            
+        }
+
+        public void OnMouseClick(UIControlBase checkbox)
+        {
+            ((CheckBox)checkbox).Checked = !((CheckBox)checkbox).Checked;
+        }
+
+        public void OnMouseOver(UIControlBase checkbox)
+        {
+            
+        }
     }
 }
