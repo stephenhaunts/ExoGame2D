@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tutorials", "Tutorials", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tutorial-1-Blank Screen", "Tutorials\Tutorial-1-Blank Screen\Tutorial-1-Blank Screen.csproj", "{81A2B46F-6E3D-465E-97D4-F2DD13B6A735}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Engine", "Engine", "{AD751EA2-4806-4D21-BDE5-25B9468C05D0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,5 +35,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{FA1D6BCA-42AE-42E4-922C-C5DA92198156} = {5ED99330-E18E-41E2-B129-8FAF417AB73C}
 		{81A2B46F-6E3D-465E-97D4-F2DD13B6A735} = {8157A4C0-723A-4E0C-94E0-889C96489A9D}
+		{F8966350-1EF9-49A3-9691-16585DF0A8EC} = {AD751EA2-4806-4D21-BDE5-25B9468C05D0}
 	EndGlobalSection
 EndGlobal
