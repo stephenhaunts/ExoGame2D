@@ -22,14 +22,14 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 using System;
-using GameEngine;
-using GameEngine.Interfaces;
-using GameEngine.Renderers;
-using GameEngine.SceneManagement;
-using GameEngineTest.Messages;
+using ExoGameEngine;
+using ExoGameEngine.Interfaces;
+using ExoGameEngine.Renderers;
+using ExoGameEngine.SceneManagement;
+using ExoGameEngine.DuckAttack.Messages;
 using Microsoft.Xna.Framework;
 
-namespace GameEngineTest.GameActors
+namespace ExoGameEngine.DuckAttack.GameActors
 {
     public class Duck : IRenderNode
     {

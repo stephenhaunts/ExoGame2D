@@ -22,13 +22,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 using System;
-using GameEngine;
-using GameEngine.Interfaces;
-using GameEngine.Renderers;
+using ExoGameEngine.Interfaces;
+using ExoGameEngine.Renderers;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
 
-namespace GameEngineTest.GameActors
+namespace ExoGameEngine.DuckAttack.GameActors
 {
     public class Crosshair : IRenderNode
     {

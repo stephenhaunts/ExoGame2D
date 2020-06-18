@@ -25,10 +25,10 @@ SOFTWARE.
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using GameEngine.Interfaces;
+using ExoGameEngine.Interfaces;
 using Microsoft.Xna.Framework.Audio;
 
-namespace GameEngine
+namespace ExoGameEngine
 {
     public class SoundEffectMessage : IChannelMessage
     {

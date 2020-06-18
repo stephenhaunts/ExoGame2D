@@ -23,11 +23,11 @@ SOFTWARE.
 */
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using GameEngine.Interfaces;
+using ExoGameEngine.Interfaces;
 using System;
 using System.Collections.Generic;
 
-namespace GameEngine.Renderers
+namespace ExoGameEngine.Renderers
 {
     public class AnimatedSprite : SpriteBase, ISprite
     {

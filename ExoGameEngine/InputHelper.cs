@@ -24,7 +24,7 @@ SOFTWARE.
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
-namespace GameEngine
+namespace ExoGameEngine
 {
     /// <summary>
     /// A class that manages mouse and keyboard input.

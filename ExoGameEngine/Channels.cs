@@ -25,9 +25,9 @@ SOFTWARE.
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using GameEngine.Interfaces;
+using ExoGameEngine.Interfaces;
 
-namespace GameEngine
+namespace ExoGameEngine
 {
     public class Channels
     {

@@ -23,7 +23,7 @@ SOFTWARE.
 */
 using Microsoft.Xna.Framework;
 
-namespace GameEngine.Interfaces
+namespace ExoGameEngine.Interfaces
 {
     public interface IGameState
     {

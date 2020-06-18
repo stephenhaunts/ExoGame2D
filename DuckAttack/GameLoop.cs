@@ -21,13 +21,13 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-using GameEngine;
-using GameEngineTest.GameStates;
+using ExoGameEngine;
+using ExoGameEngine.DuckAttack.GameStates;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace GameEngineTest
+namespace ExoGameEngine.DuckAttack
 {
     public class GameLoop : Game
     {

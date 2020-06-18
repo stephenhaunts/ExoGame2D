@@ -27,7 +27,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using System;
 
-namespace GameEngine.Renderers
+namespace ExoGameEngine.Renderers
 {
     public class SpriteBase
     {

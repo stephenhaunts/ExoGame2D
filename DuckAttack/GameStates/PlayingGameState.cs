@@ -22,15 +22,14 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 using System;
-using GameEngine;
-using GameEngine.Interfaces;
-using GameEngine.Renderers;
-using GameEngine.SceneManagement;
-using GameEngineTest.GameActors;
+using ExoGameEngine.Interfaces;
+using ExoGameEngine.Renderers;
+using ExoGameEngine.SceneManagement;
+using ExoGameEngine.DuckAttack.GameActors;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
-namespace GameEngineTest.GameStates
+namespace ExoGameEngine.DuckAttack.GameStates
 {
     public class PlayingGameState : IGameState
     {

@@ -24,11 +24,11 @@ SOFTWARE.
 
 using System;
 using System.Collections.Generic;
-using GameEngine.Interfaces;
-using GameEngine.Renderers;
+using ExoGameEngine.Interfaces;
+using ExoGameEngine.Renderers;
 using Microsoft.Xna.Framework;
 
-namespace GameEngine.SceneManagement
+namespace ExoGameEngine.SceneManagement
 {
     public class Scene
     {

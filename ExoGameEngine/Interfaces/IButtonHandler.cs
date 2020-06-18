@@ -22,9 +22,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 using System;
-using GameEngine.UI;
+using ExoGameEngine.UI;
 
-namespace GameEngine.Interfaces
+namespace ExoGameEngine.Interfaces
 {
     public interface IButtonHandler
     {

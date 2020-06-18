@@ -23,10 +23,10 @@ SOFTWARE.
 */
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using GameEngine.Interfaces;
+using ExoGameEngine.Interfaces;
 using System;
 
-namespace GameEngine.Renderers
+namespace ExoGameEngine.Renderers
 {
     public class Sprite : SpriteBase, ISprite
     {  

@@ -23,7 +23,7 @@ SOFTWARE.
 */
 using System;
 
-namespace GameEngineTest
+namespace ExoGameEngine.DuckAttack
 {
     public static class Program
     {

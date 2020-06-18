@@ -6,6 +6,7 @@
     <MonoGamePlatform>DesktopGL</MonoGamePlatform>
     <PublishReadyToRun>false</PublishReadyToRun>
     <TieredCompilation>false</TieredCompilation>
+    <RootNamespace>ExoGameEngine.DuckAttack</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup>
