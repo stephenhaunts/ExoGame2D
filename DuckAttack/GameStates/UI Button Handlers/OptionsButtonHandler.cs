@@ -28,14 +28,14 @@ namespace ExoGameEngine.DuckAttack.GameStates
 {
     public class OptionsButtonHandler : IButtonHandler
     {
-        public void OnMouseClick(UIControl button)
+        public void OnMouseClick(UIControlBase button)
         {
             Engine.GameState.CurrentState.Remove();
             Engine.GameState.Register("Options", new OptionsMenu());
             Engine.GameState.ChangeState("Options");
         }
 
-        public void OnMouseOver(UIControl button)
+        public void OnMouseOver(UIControlBase button)
         {
             
         }

@@ -30,7 +30,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace ExoGameEngine.UI
 {
-    public class Button : UIControl, IRenderNode
+    public class Button : UIControlBase, IRenderNode
     {       
         public string Text { get; set; }     
         public Color TextColor { get; set; }

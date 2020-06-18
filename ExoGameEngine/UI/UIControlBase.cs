@@ -28,7 +28,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace ExoGameEngine.UI
 {
-    public class UIControl : IUIControl
+    public class UIControlBase : IUIControl
     {
         public int Width { get; set; }
         public int Height { get; set; }

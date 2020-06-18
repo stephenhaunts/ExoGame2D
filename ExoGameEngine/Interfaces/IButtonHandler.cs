@@ -28,7 +28,7 @@ namespace ExoGameEngine.Interfaces
 {
     public interface IButtonHandler
     {
-        void OnMouseClick(UIControl button);
-        void OnMouseOver(UIControl button);
+        void OnMouseClick(UIControlBase button);
+        void OnMouseOver(UIControlBase button);
     }
 }

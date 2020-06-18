@@ -28,14 +28,14 @@ namespace ExoGameEngine.DuckAttack.GameStates
 {
     public class NewGameButtonHandler : IButtonHandler
     {
-        public void OnMouseClick(UIControl button)
+        public void OnMouseClick(UIControlBase button)
         {
             Engine.GameState.CurrentState.Remove();
             Engine.GameState.Register("Playing", new PlayingGameState());
             Engine.GameState.ChangeState("Playing");
         }
 
-        public void OnMouseOver(UIControl button)
+        public void OnMouseOver(UIControlBase button)
         {
             
         }

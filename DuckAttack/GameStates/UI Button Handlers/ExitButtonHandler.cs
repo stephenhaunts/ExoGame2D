@@ -28,7 +28,7 @@ namespace ExoGameEngine.DuckAttack.GameStates
 {
     public class ExitButtonHandler : IButtonHandler
     {
-        public void OnMouseClick(UIControl button)
+        public void OnMouseClick(UIControlBase button)
         {
             Engine.Exit();
             //Engine.GameState.CurrentState.Remove();
@@ -36,7 +36,7 @@ namespace ExoGameEngine.DuckAttack.GameStates
            // Engine.GameState.ChangeState("Playing");
         }
 
-        public void OnMouseOver(UIControl button)
+        public void OnMouseOver(UIControlBase button)
         {
             
         }

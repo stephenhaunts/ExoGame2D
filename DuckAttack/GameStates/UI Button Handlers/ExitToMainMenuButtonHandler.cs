@@ -29,14 +29,14 @@ namespace ExoGameEngine.DuckAttack.GameStates
 {
     public class ExitToMainMenuButtonHandler : IButtonHandler
     {
-        public void OnMouseClick(UIControl button)
+        public void OnMouseClick(UIControlBase button)
         {
             Engine.GameState.CurrentState.Remove();
             Engine.GameState.Register("MenuMenu", new MainMenu());
             Engine.GameState.ChangeState("MenuMenu");
         }
 
-        public void OnMouseOver(UIControl button)
+        public void OnMouseOver(UIControlBase button)
         {
             
         }
