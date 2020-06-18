@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SourceFile>/Users/stephenhaunts/Documents/Git/ExoGameEngine/Tutorials/Tutorial-1-Blank Screen/Content/Default.spritefont</SourceFile>
+  <SourceTime>2020-06-09T17:47:30+01:00</SourceTime>
+  <DestFile>/Users/stephenhaunts/Documents/Git/ExoGameEngine/Tutorials/Tutorial-1-Blank Screen/Content/bin/DesktopGL/Content/default.xnb</DestFile>
+  <DestTime>2020-06-18T11:21:37.1566116+01:00</DestTime>
+  <Importer>FontDescriptionImporter</Importer>
+  <ImporterTime>2018-08-05T16:49:54+01:00</ImporterTime>
+  <Processor>FontDescriptionProcessor</Processor>
+  <ProcessorTime>2018-08-05T16:49:54+01:00</ProcessorTime>
+  <Parameters>
+    <Key>PremultiplyAlpha</Key>
+    <Value>True</Value>
+  </Parameters>
+  <Parameters>
+    <Key>TextureFormat</Key>
+    <Value>Compressed</Value>
+  </Parameters>
+  <Dependencies />
+  <BuildAsset />
+  <BuildOutput />
+</PipelineBuildEvent>
