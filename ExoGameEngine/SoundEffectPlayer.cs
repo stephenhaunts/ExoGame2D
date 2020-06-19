@@ -38,6 +38,7 @@ namespace ExoGameEngine
     public static class SoundEffectPlayer
     {
         private static Dictionary<string, SoundEffect> _soundEffects = new Dictionary<string, SoundEffect>();
+        public static bool PlaySoundEffects { get; set; } = true;
 
         public static void LoadSoundEffect(string name)
         {
@@ -87,7 +88,10 @@ namespace ExoGameEngine
                 throw new InvalidOperationException("The sound effect <" + lowerCaseName + "> doesn't exists.");
             }
 
-            _soundEffects[name].CreateInstance().Play();
+            if (PlaySoundEffects)
+            {
+                _soundEffects[name].CreateInstance().Play();
+            }
         }
 
         public static void ProcessSoundEvents()

@@ -36,6 +36,7 @@ namespace ExoGameEngine.DuckAttack.GameStates
         public void OnMouseClick(UIControlBase checkbox)
         {
             ((CheckBox)checkbox).Checked = !((CheckBox)checkbox).Checked;
+            SoundEffectPlayer.PlaySoundEffects = ((CheckBox)checkbox).Checked;
         }
 
         public void OnMouseOver(UIControlBase checkbox)

@@ -67,8 +67,11 @@ namespace ExoGameEngine.DuckAttack.GameStates
                 Height = 70,
                 Location = new Vector2(700, startYPosition),
                 Text = "Sound Effects On/Off",
-                DrawWindowChrome = true
+                DrawWindowChrome = true,
+                ControlTexture = "ButtonBackground"
             };
+
+            ((CheckBox)_soundEffectsOnOff).Checked = SoundEffectPlayer.PlaySoundEffects;
 
             startYPosition += 80;
 
@@ -78,9 +81,11 @@ namespace ExoGameEngine.DuckAttack.GameStates
                 Height = 70,
                 Location = new Vector2(700, startYPosition),
                 Text = "<-- Exit to Main Menu",
-                DrawWindowChrome = true
+                DrawWindowChrome = true,
+                ControlTexture = "ButtonBackground"
             };        
 
+            
             _container.AddControl(_soundEffectsOnOff);
             _container.AddControl(_backToMainMenu);
 

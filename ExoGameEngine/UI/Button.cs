@@ -60,9 +60,9 @@ namespace ExoGameEngine.UI
             Text = "My Button";
             Color = Color.LightGray;
             OutlineColor = Color.Gray;
-            MouseOverColor = Color.DimGray;
+            MouseOverColor = Color.Gray;
             TextColor = Color.Black;
-            MouseOverTextColor = Color.DarkKhaki;
+            MouseOverTextColor = Color.Khaki;
 
             DrawWindowChrome = true;
             _font = Engine.Content.Load<SpriteFont>("default");         
@@ -118,6 +118,22 @@ namespace ExoGameEngine.UI
                 }
 
                 Engine.SpriteBatch.DrawRectangle(Location, new Vector2(Width, Height), OutlineColor, 2);
+            }
+
+            if (!string.IsNullOrEmpty(_controlTextureName))
+            {
+                if (MouseOver)
+                {
+                    Engine.SpriteBatch.Draw(_controlTexture, Location,
+                        new Rectangle(0, 0, _controlTexture.Width, _controlTexture.Height), MouseOverColor, 0.0f,
+                        new Vector2(0, 0), 1.0f, SpriteEffects.None, 0.0f);
+                }
+                else
+                {
+                    Engine.SpriteBatch.Draw(_controlTexture, Location,
+                        new Rectangle(0, 0, _controlTexture.Width, _controlTexture.Height), Color.White, 0.0f,
+                        new Vector2(0, 0), 1.0f, SpriteEffects.None, 0.0f);
+                }
             }
 
             if (MouseOver)

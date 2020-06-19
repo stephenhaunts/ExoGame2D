@@ -41,6 +41,21 @@ namespace ExoGameEngine.UI
         public bool DrawWindowChrome { get; set; }
         public bool MouseOver { get; set; }
         public string Name { get; set; }
+        protected Texture2D _controlTexture { get; set; }
+        protected string _controlTextureName;
+
+        public string ControlTexture
+        {
+            get
+            {
+                return _controlTextureName;
+            }
+            set
+            {
+                _controlTexture = Engine.Content.Load<Texture2D>(value);
+                _controlTextureName = value;
+            }
+        }
 
         protected void DrawString(SpriteFont font, string text, Rectangle bounds, AlignmentEnum align, Color color)
         {

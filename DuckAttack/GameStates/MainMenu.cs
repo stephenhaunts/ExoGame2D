@@ -69,7 +69,8 @@ namespace ExoGameEngine.DuckAttack.GameStates
                 Height = 70,
                 Location = new Vector2(700, startYPosition),
                 Text = "Play Duck Attack",
-                DrawWindowChrome = true
+                DrawWindowChrome = true,
+                ControlTexture = "ButtonBackground"
             };
 
             startYPosition += 80;
@@ -80,7 +81,8 @@ namespace ExoGameEngine.DuckAttack.GameStates
                 Height = 70,
                 Location = new Vector2(700, startYPosition),
                 Text = "Options",
-                DrawWindowChrome = true
+                DrawWindowChrome = true,
+                ControlTexture = "ButtonBackground"
             };
 
             startYPosition += 80;
@@ -91,7 +93,8 @@ namespace ExoGameEngine.DuckAttack.GameStates
                 Height = 70,
                 Location = new Vector2(700, startYPosition),
                 Text = "Exit Game",
-                DrawWindowChrome = true
+                DrawWindowChrome = true,
+                ControlTexture = "ButtonBackground"
             };
 
             _container.AddControl(_playGameButton);

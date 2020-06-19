@@ -35,6 +35,8 @@ namespace ExoGameEngine.UI
         public string Text { get; set; }     
         public Color TextColor { get; set; }
         public Color MouseOverTextColor { get; set; }
+        public Color CheckBoxMouseOverColor { get; set; }
+
         private SpriteFont _font;
         private ICheckBoxHandler _handler;
 
@@ -69,6 +71,7 @@ namespace ExoGameEngine.UI
             Color = Color.LightGray;
             OutlineColor = Color.Gray;
             MouseOverColor = Color.DimGray;
+            CheckBoxMouseOverColor = Color.LightGray;
             TextColor = Color.Black;
             MouseOverTextColor = Color.DarkKhaki;
 
@@ -122,7 +125,7 @@ namespace ExoGameEngine.UI
                 if (MouseOver)
                 {
                     Engine.SpriteBatch.FillRectangle(Location.X, Location.Y, _checkBoxWidth, Height, MouseOverColor);
-                    Engine.SpriteBatch.FillRectangle(Location.X + _checkBoxWidth, Location.Y, Width - _checkBoxWidth, Height, Color);
+                    Engine.SpriteBatch.FillRectangle(Location.X + _checkBoxWidth, Location.Y, Width - _checkBoxWidth, Height, CheckBoxMouseOverColor);
                 }
                 else
                 {
@@ -134,10 +137,27 @@ namespace ExoGameEngine.UI
                 Engine.SpriteBatch.DrawRectangle(Location, new Vector2(Width, Height), OutlineColor, 2);
             }
 
+
+            if (!string.IsNullOrEmpty(_controlTextureName))
+            {
+                if (MouseOver)
+                {
+                    Engine.SpriteBatch.Draw(_controlTexture, Location,
+                        new Rectangle(0, 0, _controlTexture.Width, _controlTexture.Height), MouseOverColor, 0.0f,
+                        new Vector2(0, 0), 1.0f, SpriteEffects.None, 0.0f);
+                }
+                else
+                {
+                    Engine.SpriteBatch.Draw(_controlTexture, Location,
+                        new Rectangle(0, 0, _controlTexture.Width, _controlTexture.Height), Color.White, 0.0f,
+                        new Vector2(0, 0), 1.0f, SpriteEffects.None, 0.0f);
+                }
+            }
+
             if (Checked)
             {
                 Engine.SpriteBatch.DrawLine(new Vector2((int)Location.X, (int)Location.Y), new Vector2((int)(Location.X + _checkBoxWidth), (int)Location.Y + Height), OutlineColor, 2);
-                Engine.SpriteBatch.DrawLine(new Vector2((int)Location.X + _checkBoxWidth, (int)Location.Y), new Vector2((int)(Location.X), (int)Location.Y + Height), OutlineColor, 2);
+                Engine.SpriteBatch.DrawLine(new Vector2((int)Location.X+1 + _checkBoxWidth, (int)Location.Y+1), new Vector2((int)(Location.X), (int)Location.Y + Height), OutlineColor, 2);
 
             }
 
@@ -145,7 +165,16 @@ namespace ExoGameEngine.UI
 
             Rectangle bounds = new Rectangle((int)(Location.X + _checkBoxWidth), (int)Location.Y, (int)(Width - _checkBoxWidth), Height);
 
-            DrawString(_font, Text, bounds, AlignmentEnum.Center, TextColor);
+            if (MouseOver)
+            {
+                
+                DrawString(_font, Text, bounds, AlignmentEnum.Center, MouseOverTextColor);
+            }
+            else
+            {
+                
+                DrawString(_font, Text, bounds, AlignmentEnum.Center, TextColor);
+            }           
         }
 
         public ISprite GetSprite()
