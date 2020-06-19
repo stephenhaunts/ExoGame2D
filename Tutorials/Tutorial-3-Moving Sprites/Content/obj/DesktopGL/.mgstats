@@ -1,0 +1,2 @@
+Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"/Users/stephenhaunts/Documents/Git/ExoGameEngine/Tutorials/Tutorial-2-Draw Sprite/Content/ExoEngineLogo.png","/Users/stephenhaunts/Documents/Git/ExoGameEngine/Tutorials/Tutorial-2-Draw Sprite/Content/bin/DesktopGL/ExoEngineLogo.xnb","TextureProcessor","Texture2DContent",81541,2370901,0.186327

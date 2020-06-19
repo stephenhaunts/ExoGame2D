@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SourceFile>/Users/stephenhaunts/Documents/Git/MonoGameTest/GameEngineTest/Content/scream.wav</SourceFile>
+  <SourceTime>2020-06-09T16:24:26.4218785+01:00</SourceTime>
+  <DestFile>/Users/stephenhaunts/Documents/Git/MonoGameTest/GameEngineTest/Content/bin/DesktopGL/scream.xnb</DestFile>
+  <DestTime>2020-06-15T13:08:24.4227847+01:00</DestTime>
+  <Importer>WavImporter</Importer>
+  <ImporterTime>2018-12-08T16:35:14+00:00</ImporterTime>
+  <Processor>SoundEffectProcessor</Processor>
+  <ProcessorTime>2018-12-08T16:35:14+00:00</ProcessorTime>
+  <Parameters>
+    <Key>Quality</Key>
+    <Value>Best</Value>
+  </Parameters>
+  <Dependencies />
+  <BuildAsset />
+  <BuildOutput />
+</PipelineBuildEvent>

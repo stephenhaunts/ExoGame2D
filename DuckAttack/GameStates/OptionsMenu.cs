@@ -94,8 +94,7 @@ namespace ExoGameEngine.DuckAttack.GameStates
             _scene.AddSpriteToLayer(RenderLayerEnum.LAYER5, _crosshair);
             _scene.AddSpriteToLayer(RenderLayerEnum.LAYER4, _container);
         }
-
-        
+      
         public void Remove()
         {
             CollisionManager.RemoveAll();

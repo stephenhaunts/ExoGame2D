@@ -35,6 +35,16 @@ namespace ExoGameEngine.Renderers
           
         }
 
+        public Sprite(string name) : base()
+        {
+            if (string.IsNullOrEmpty(name))
+            {
+                throw new ArgumentNullException(nameof(name));
+            }
+
+            Name = name;
+        }
+
         public new void Update(GameTime gameTime)
         {        
             base.Update(gameTime);
@@ -52,7 +62,7 @@ namespace ExoGameEngine.Renderers
 
         public ISprite GetSprite()
         {
-            throw new NotImplementedException();
+            return this;
         }
 
         public bool IsAssetOfType(Type type)

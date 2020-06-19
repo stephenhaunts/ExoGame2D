@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SourceFile>/Users/stephenhaunts/Documents/Git/MonoGameTest/GameEngineTest/Content/TitleScreen.spritefont</SourceFile>
+  <SourceTime>2020-06-15T13:10:30.4433271+01:00</SourceTime>
+  <DestFile>/Users/stephenhaunts/Documents/Git/MonoGameTest/GameEngineTest/Content/bin/DesktopGL/TitleScreen.xnb</DestFile>
+  <DestTime>2020-06-15T13:10:33.0885481+01:00</DestTime>
+  <Importer>FontDescriptionImporter</Importer>
+  <ImporterTime>2018-12-08T16:35:14+00:00</ImporterTime>
+  <Processor>FontDescriptionProcessor</Processor>
+  <ProcessorTime>2018-12-08T16:35:14+00:00</ProcessorTime>
+  <Parameters>
+    <Key>PremultiplyAlpha</Key>
+    <Value>True</Value>
+  </Parameters>
+  <Parameters>
+    <Key>TextureFormat</Key>
+    <Value>Compressed</Value>
+  </Parameters>
+  <Dependencies />
+  <BuildAsset />
+  <BuildOutput />
+</PipelineBuildEvent>

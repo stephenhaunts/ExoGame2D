@@ -31,7 +31,7 @@ namespace ExoGameEngine.Tutorials.Tutorial1_BlankScreen
     {
         public GameLoop()
         {
-            Engine.InitializeEngine(this, 1280, 720);
+            Engine.InitializeEngine(this, 1920, 1080);
             IsMouseVisible = true;
         }
 

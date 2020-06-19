@@ -167,10 +167,10 @@ namespace ExoGameEngine.Renderers
                 return;
             }
 
-            SpriteEffects effect = Flip ? SpriteEffects.FlipHorizontally : SpriteEffects.None;        
-
+            SpriteEffects effect = Flip ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
+                
             _spriteBatch.Draw(_currentTexture, _location,
-                new Rectangle(0, 0, _currentTexture.Width, _currentTexture.Height), tint, 0.0f,
+                new Rectangle(0, 0, _currentTexture.Width, _currentTexture.Height), tint, 0,
                 new Vector2(0, 0), 1.0f, effect, 0.0f);
 
             if (RenderBoundingBox)
