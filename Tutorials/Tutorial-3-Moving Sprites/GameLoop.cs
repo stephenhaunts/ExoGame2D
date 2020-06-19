@@ -27,7 +27,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace ExoGameEngine.Tutorials.Tutorial1_BlankScreen
+namespace ExoGameEngine.Tutorials.Tutorial3_MovingSprites
 {
     public class GameLoop : Game
     {
@@ -56,7 +56,6 @@ namespace ExoGameEngine.Tutorials.Tutorial1_BlankScreen
             _logo.Velocity = new Vector2(5, 5);
 
             _scene.AddSpriteToLayer(RenderLayerEnum.LAYER1, _logo);
-
         }
 
         protected override void Update(GameTime gameTime)

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>/Users/stephenhaunts/Documents/Git/ExoGameEngine/Tutorials/Tutorial-3-Moving Sprites/Content/ExoEngineLogo.png</SourceFile>
-  <SourceTime>2020-06-19T11:08:14.3155599+01:00</SourceTime>
+  <SourceTime>2020-06-19T11:08:14+01:00</SourceTime>
   <DestFile>/Users/stephenhaunts/Documents/Git/ExoGameEngine/Tutorials/Tutorial-3-Moving Sprites/Content/bin/DesktopGL/Content/ExoEngineLogo.xnb</DestFile>
-  <DestTime>2020-06-19T11:40:23.9478879+01:00</DestTime>
+  <DestTime>2020-06-19T13:38:04.7664909+01:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-08-05T16:49:54+01:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

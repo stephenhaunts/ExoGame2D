@@ -23,7 +23,7 @@ SOFTWARE.
 */
 using System;
 
-namespace ExoGameEngine.Tutorials.Tutorial1_BlankScreen
+namespace ExoGameEngine.Tutorials.Tutorial2_DrawSprite
 {
     public static class Program
     {

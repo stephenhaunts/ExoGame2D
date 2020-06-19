@@ -6,7 +6,7 @@
     <MonoGamePlatform>DesktopGL</MonoGamePlatform>
     <PublishReadyToRun>false</PublishReadyToRun>
     <TieredCompilation>false</TieredCompilation>
-    <RootNamespace>ExoGameEngine.Tutorials.Tutorial1_BlankScreen</RootNamespace>
+    <RootNamespace>ExoGameEngine.Tutorials.Tutorial3_MovingSprites</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup>
