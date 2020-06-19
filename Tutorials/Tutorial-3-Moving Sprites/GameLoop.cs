@@ -68,6 +68,11 @@ namespace ExoGameEngine.Tutorials.Tutorial1_BlankScreen
                 Exit();         
             }
 
+            if (InputHelper.KeyPressed(Keys.F))
+            {
+                Engine.FullScreen = !Engine.FullScreen;
+            }
+
             if (_logo.X + _logo.Width > Engine.ScaledViewPort.X)
             {
                 _logo.VX = -_logo.VX;               

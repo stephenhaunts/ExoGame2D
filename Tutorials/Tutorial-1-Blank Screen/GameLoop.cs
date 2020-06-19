@@ -54,6 +54,11 @@ namespace ExoGameEngine.Tutorials.Tutorial1_BlankScreen
                 Exit();         
             }
 
+            if (InputHelper.KeyPressed(Keys.F))
+            {
+                Engine.FullScreen = !Engine.FullScreen;
+            }
+
             base.Update(gameTime);
         }
 
