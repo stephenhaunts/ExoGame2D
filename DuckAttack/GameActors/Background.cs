@@ -22,11 +22,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 using System;
-using ExoGameEngine.Interfaces;
-using ExoGameEngine.Renderers;
+using ExoGame2D.Interfaces;
+using ExoGame2D.Renderers;
 using Microsoft.Xna.Framework;
 
-namespace ExoGameEngine.DuckAttack.GameActors
+namespace ExoGame2D.DuckAttack.GameActors
 {
     public class Background : IRenderNode
     {

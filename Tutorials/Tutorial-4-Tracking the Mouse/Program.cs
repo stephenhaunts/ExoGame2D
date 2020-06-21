@@ -23,7 +23,7 @@ SOFTWARE.
 */
 using System;
 
-namespace ExoGameEngine.Tutorials.Tutorial4_TrackingTheMouse
+namespace ExoGame2D.Tutorials.Tutorial4_TrackingTheMouse
 {
     public static class Program
     {

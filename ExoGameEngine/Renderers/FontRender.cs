@@ -22,12 +22,12 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 using System;
-using ExoGameEngine.Interfaces;
+using ExoGame2D.Interfaces;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace ExoGameEngine.Renderers
+namespace ExoGame2D.Renderers
 {
     public class FontRender : IRenderNode
     {

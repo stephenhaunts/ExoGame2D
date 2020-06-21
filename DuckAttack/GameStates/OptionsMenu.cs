@@ -21,16 +21,16 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-using ExoGameEngine.Interfaces;
-using ExoGameEngine.Renderers;
-using ExoGameEngine.SceneManagement;
-using ExoGameEngine.UI;
-using ExoGameEngine.DuckAttack.GameActors;
-using ExoGameEngine.DuckAttack.MainMenuActors;
+using ExoGame2D.Interfaces;
+using ExoGame2D.Renderers;
+using ExoGame2D.SceneManagement;
+using ExoGame2D.UI;
+using ExoGame2D.DuckAttack.GameActors;
+using ExoGame2D.DuckAttack.MainMenuActors;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
-namespace ExoGameEngine.DuckAttack.GameStates
+namespace ExoGame2D.DuckAttack.GameStates
 {
     public class OptionsMenu : IGameState
     {

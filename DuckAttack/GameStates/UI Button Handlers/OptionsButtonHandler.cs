@@ -21,10 +21,10 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-using ExoGameEngine.Interfaces;
-using ExoGameEngine.UI;
+using ExoGame2D.Interfaces;
+using ExoGame2D.UI;
 
-namespace ExoGameEngine.DuckAttack.GameStates
+namespace ExoGame2D.DuckAttack.GameStates
 {
     public class OptionsButtonHandler : IButtonHandler
     {

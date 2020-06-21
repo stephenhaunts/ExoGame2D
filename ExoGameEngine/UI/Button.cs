@@ -23,12 +23,12 @@ SOFTWARE.
 */
 
 using System;
-using ExoGameEngine.Interfaces;
+using ExoGame2D.Interfaces;
 using Microsoft.Xna.Framework;
-using ExoGameEngine.Renderers;
+using ExoGame2D.Renderers;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace ExoGameEngine.UI
+namespace ExoGame2D.UI
 {
     public class Button : UIControlBase, IRenderNode
     {       

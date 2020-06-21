@@ -24,10 +24,10 @@ SOFTWARE.
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using ExoGameEngine.Interfaces;
+using ExoGame2D.Interfaces;
 using Microsoft.Xna.Framework;
 
-namespace ExoGameEngine
+namespace ExoGame2D
 {
     public class GameStateManager
     {

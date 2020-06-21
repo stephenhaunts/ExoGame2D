@@ -23,7 +23,7 @@ SOFTWARE.
 */
 using System;
 
-namespace ExoGameEngine.Interfaces
+namespace ExoGame2D.Interfaces
 {
     public interface IChannelMessage
     {

@@ -22,9 +22,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 using System.Collections.Generic;
-using ExoGameEngine.Interfaces;
+using ExoGame2D.Interfaces;
 
-namespace ExoGameEngine
+namespace ExoGame2D
 {
     public class CollisionManager
     {

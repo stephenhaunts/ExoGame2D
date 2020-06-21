@@ -22,11 +22,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-using ExoGameEngine.Interfaces;
+using ExoGame2D.Interfaces;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace ExoGameEngine.UI
+namespace ExoGame2D.UI
 {
     public class UIControlBase : IUIControl
     {

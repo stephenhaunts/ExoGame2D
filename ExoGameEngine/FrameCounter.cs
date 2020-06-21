@@ -24,7 +24,7 @@ SOFTWARE.
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ExoGameEngine
+namespace ExoGame2D
 {
     public class FrameCounter
     {

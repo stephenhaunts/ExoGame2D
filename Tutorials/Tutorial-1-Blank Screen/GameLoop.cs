@@ -25,7 +25,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace ExoGameEngine.Tutorials.Tutorial1_BlankScreen
+namespace ExoGame2D.Tutorials.Tutorial1_BlankScreen
 {
     public class GameLoop : Game
     {

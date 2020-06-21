@@ -22,13 +22,13 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 using System;
-using ExoGameEngine;
-using ExoGameEngine.Interfaces;
-using ExoGameEngine.Renderers;
-using ExoGameEngine.DuckAttack.Messages;
+using ExoGame2D;
+using ExoGame2D.Interfaces;
+using ExoGame2D.Renderers;
+using ExoGame2D.DuckAttack.Messages;
 using Microsoft.Xna.Framework;
 
-namespace ExoGameEngine.DuckAttack.GameActors
+namespace ExoGame2D.DuckAttack.GameActors
 {
     public class ScoreBoard : IRenderNode
     {

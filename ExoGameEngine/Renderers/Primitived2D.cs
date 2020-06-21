@@ -26,7 +26,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace ExoGameEngine.Renderers
+namespace ExoGame2D.Renderers
 {
 	/// <summary>
 	/// This code was taken from https://bitbucket.org/C3/2d-xna-primitives/src/default/

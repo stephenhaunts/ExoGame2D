@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DuckAttack", "DuckAttack\DuckAttack.csproj", "{FA1D6BCA-42AE-42E4-922C-C5DA92198156}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExoGameEngine", "ExoGameEngine\ExoGameEngine.csproj", "{F8966350-1EF9-49A3-9691-16585DF0A8EC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExoGame2D", "ExoGameEngine\ExoGame2D.csproj", "{F8966350-1EF9-49A3-9691-16585DF0A8EC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Game Examples", "Game Examples", "{5ED99330-E18E-41E2-B129-8FAF417AB73C}"
 EndProject

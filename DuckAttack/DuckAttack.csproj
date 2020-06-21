@@ -6,7 +6,7 @@
     <MonoGamePlatform>DesktopGL</MonoGamePlatform>
     <PublishReadyToRun>false</PublishReadyToRun>
     <TieredCompilation>false</TieredCompilation>
-    <RootNamespace>ExoGameEngine.DuckAttack</RootNamespace>
+    <RootNamespace>ExoGame2D.DuckAttack</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -45,6 +45,6 @@
     <Folder Include="GameStates\UI Button Handlers\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ExoGameEngine\ExoGameEngine.csproj" />
+    <ProjectReference Include="..\ExoGameEngine\ExoGame2D.csproj" />
   </ItemGroup>
 </Project>

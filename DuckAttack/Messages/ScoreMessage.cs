@@ -21,9 +21,9 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-using ExoGameEngine.Interfaces;
+using ExoGame2D.Interfaces;
 
-namespace ExoGameEngine.DuckAttack.Messages
+namespace ExoGame2D.DuckAttack.Messages
 {
     public class ScoreMessage : IChannelMessage
     {

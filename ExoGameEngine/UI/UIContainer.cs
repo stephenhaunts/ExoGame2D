@@ -23,11 +23,11 @@ SOFTWARE.
 */
 
 using System;
-using ExoGameEngine.Interfaces;
+using ExoGame2D.Interfaces;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 
-namespace ExoGameEngine.UI
+namespace ExoGame2D.UI
 {
     public class UIContainer : IRenderNode
     {

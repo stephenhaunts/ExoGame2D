@@ -23,11 +23,11 @@ SOFTWARE.
 */
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using ExoGameEngine.Interfaces;
+using ExoGame2D.Interfaces;
 using System;
 using System.Collections.Generic;
 
-namespace ExoGameEngine.Renderers
+namespace ExoGame2D.Renderers
 {
     public class AnimatedSprite : SpriteBase, ISprite
     {
