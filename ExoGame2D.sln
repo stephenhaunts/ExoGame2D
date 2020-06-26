@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tutorial-3-Moving Sprites",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tutorial-4-Tracking the Mouse", "Tutorials\Tutorial-4-Tracking the Mouse\Tutorial-4-Tracking the Mouse.csproj", "{5DAB40A1-0987-49DA-9045-928D5FE1CC4D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tutorial-5-Font Rendering", "Tutorials\Tutorial-5-Font Rendering\Tutorial-5-Font Rendering.csproj", "{06DDAA07-CF8C-410E-9D98-9FA8A0979CD1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,10 @@ Global
 		{5DAB40A1-0987-49DA-9045-928D5FE1CC4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5DAB40A1-0987-49DA-9045-928D5FE1CC4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5DAB40A1-0987-49DA-9045-928D5FE1CC4D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06DDAA07-CF8C-410E-9D98-9FA8A0979CD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06DDAA07-CF8C-410E-9D98-9FA8A0979CD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06DDAA07-CF8C-410E-9D98-9FA8A0979CD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06DDAA07-CF8C-410E-9D98-9FA8A0979CD1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{FA1D6BCA-42AE-42E4-922C-C5DA92198156} = {5ED99330-E18E-41E2-B129-8FAF417AB73C}
@@ -57,5 +63,6 @@ Global
 		{240DD2DF-B897-436E-B84F-0BB69299DF49} = {8157A4C0-723A-4E0C-94E0-889C96489A9D}
 		{5D0E923B-5FB8-4707-9BBB-CA04C9935D43} = {8157A4C0-723A-4E0C-94E0-889C96489A9D}
 		{5DAB40A1-0987-49DA-9045-928D5FE1CC4D} = {8157A4C0-723A-4E0C-94E0-889C96489A9D}
+		{06DDAA07-CF8C-410E-9D98-9FA8A0979CD1} = {8157A4C0-723A-4E0C-94E0-889C96489A9D}
 	EndGlobalSection
 EndGlobal
