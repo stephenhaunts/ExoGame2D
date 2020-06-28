@@ -352,3 +352,5 @@ MigrationBackup/
 .DS_Store
 
 Tutorials/Tutorial-1-Blank Screen/Content/Thumbs.db
+
+DuckAttack/Content/Thumbs.db

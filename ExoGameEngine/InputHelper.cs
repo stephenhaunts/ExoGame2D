@@ -59,8 +59,23 @@ namespace ExoGame2D
         /// </summary>
         /// <returns>true if the left mouse button is now pressed and was not yet pressed in the previous frame; false otherwise.</returns>
         public static bool MouseLeftButtonPressed()
-        {
+        {         
             return currentMouseState.LeftButton == ButtonState.Pressed && previousMouseState.LeftButton == ButtonState.Released;
+        }
+
+        public static bool MouseRightButtonPressed()
+        {
+            return currentMouseState.RightButton == ButtonState.Pressed && previousMouseState.RightButton == ButtonState.Released;
+        }
+
+        public static bool MouseLeftButtonHeld()
+        {          
+            return currentMouseState.LeftButton == ButtonState.Pressed;
+        }
+
+        public static bool MouseRightButtonHeld()
+        {
+            return currentMouseState.RightButton == ButtonState.Pressed;
         }
 
         /// <summary>
