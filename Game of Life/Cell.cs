@@ -26,59 +26,59 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace ExoGame2D.GameOfLife
 {
-	public class Cell
-	{
-		private Point _position { get; set; }
-		private Rectangle _boundingBox { get; set; }
+    public class Cell
+    {
+        private Point _position { get; set; }
+        private Rectangle _boundingBox { get; set; }
         public int GenerationsLeftToLive = 255;
         public bool IsAlive { get; set; }
 
         public Cell(Point position)
-		{
-			GenerationsLeftToLive = 255;
-			_position = position;
-			_boundingBox = new Rectangle(_position.X * GameLoop.SingleCellSize, _position.Y * GameLoop.SingleCellSize, GameLoop.SingleCellSize, GameLoop.SingleCellSize);
+        {
+            GenerationsLeftToLive = 255;
+            _position = position;
+            _boundingBox = new Rectangle(_position.X * GameLoop.SingleCellSize, _position.Y * GameLoop.SingleCellSize, GameLoop.SingleCellSize, GameLoop.SingleCellSize);
 
-			IsAlive = false;
-		}
+            IsAlive = false;
+        }
 
-		public void Update()
-		{
-			if (!GameLoop.Paused)
-			{
-				if (IsAlive && GameLoop.ALLOW_CELL_DEGENERATION)
-				{
-					GenerationsLeftToLive -= 1;
-				}
+        public void Update()
+        {
+            if (!GameLoop.Paused)
+            {
+                if (IsAlive && GameLoop.ALLOW_CELL_DEGENERATION)
+                {
+                    GenerationsLeftToLive -= 1;
+                }
 
-				if (GenerationsLeftToLive <= 0)
-				{
-					IsAlive = false;
-				}
-			}
+                if (GenerationsLeftToLive <= 0)
+                {
+                    IsAlive = false;
+                }
+            }
 
-			var point = Engine.ScreenToWorld(new Vector2(InputHelper.MousePosition.X, InputHelper.MousePosition.Y));
+            var point = Engine.ScreenToWorld(new Vector2(InputHelper.MousePosition.X, InputHelper.MousePosition.Y));
 
-			if (_boundingBox.Contains(new Point((int)point.X, (int)point.Y)))
-			{
-				if (InputHelper.MouseLeftButtonHeld())
-				{
-					IsAlive = true;
-					GenerationsLeftToLive = 255;
-				}
-				else if (InputHelper.MouseRightButtonHeld())
-				{
-					IsAlive = false;
-				}
-			}
-		}
+            if (_boundingBox.Contains(new Point((int)point.X, (int)point.Y)))
+            {
+                if (InputHelper.MouseLeftButtonHeld())
+                {
+                    IsAlive = true;
+                    GenerationsLeftToLive = 255;
+                }
+                else if (InputHelper.MouseRightButtonHeld())
+                {
+                    IsAlive = false;
+                }
+            }
+        }
 
-		public void Draw(SpriteBatch spriteBatch)
-		{
-			if (IsAlive)
-			{
-				spriteBatch.Draw(GameLoop.Pixel, _boundingBox, new Color(0, GenerationsLeftToLive, 0));
-			}	
-		}
-	}
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            if (IsAlive)
+            {
+                spriteBatch.Draw(GameLoop.Pixel, _boundingBox, new Color(0, GenerationsLeftToLive, 0));
+            }
+        }
+    }
 }
