@@ -31,7 +31,7 @@ namespace ExoGame2D.GameOfLife
     public class GameLoop : Game
     {
         public const bool ALLOW_CELL_DEGENERATION = true;
-        public const int GenerationsPerSecond = 10; 
+        public const int GenerationsPerSecond = 10;
         public const int SingleCellSize = 10;
         private const int NumberCellsHorizontal = 200;
         private const int NumberCellsVertical = 49 * 2;
@@ -44,7 +44,7 @@ namespace ExoGame2D.GameOfLife
         {
             Engine.InitializeEngine(this, 1920, 1080);
             IsMouseVisible = true;
-            _scene = new Scene();       
+            _scene = new Scene();
         }
 
         protected override void Initialize()
@@ -58,7 +58,7 @@ namespace ExoGame2D.GameOfLife
         {
             Window.AllowUserResizing = true;
             Pixel = new Texture2D(ExoGame2D.Engine.SpriteBatch.GraphicsDevice, 1, 1);
-            Pixel.SetData(new[] { Color.Gray });    
+            Pixel.SetData(new[] { Color.Gray });
         }
 
         protected override void Update(GameTime gameTime)
@@ -67,7 +67,7 @@ namespace ExoGame2D.GameOfLife
 
             if (InputHelper.KeyPressed(Keys.Escape))
             {
-                Exit();         
+                Exit();
             }
 
             if (InputHelper.KeyPressed(Keys.F))

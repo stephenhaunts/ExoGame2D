@@ -27,49 +27,49 @@ using Microsoft.Xna.Framework;
 
 namespace ExoGame2D.GameOfLife
 {
-	public class Grid : IRenderNode
-	{
-		private Point Size { get; set; }
-        public string Name { get; set;}
+    public class Grid : IRenderNode
+    {
+        private Point Size { get; set; }
+        public string Name { get; set; }
         private Cell[,] _currentCellState;
-		private Cell[,] _nextCellStates;
-		private TimeSpan updateTimer;
+        private Cell[,] _nextCellStates;
+        private TimeSpan updateTimer;
 
-		public Grid(int sizeX, int sizeY)
-		{
-			Size = new Point(sizeX, sizeY);
-			
-			_currentCellState = new Cell[Size.X, Size.Y];
-			_nextCellStates = new Cell[Size.X, Size.Y];
+        public Grid(int sizeX, int sizeY)
+        {
+            Size = new Point(sizeX, sizeY);
 
-			for (int i = 0; i < Size.X; i++)
-			{
-				for (int j = 0; j < Size.Y; j++)
-				{
-					_currentCellState[i, j] = new Cell(new Point(i, j));
-					_nextCellStates[i, j] = new Cell(new Point(i, j));
-				}
-			}
+            _currentCellState = new Cell[Size.X, Size.Y];
+            _nextCellStates = new Cell[Size.X, Size.Y];
 
-			updateTimer = TimeSpan.Zero;
-		}
+            for (int i = 0; i < Size.X; i++)
+            {
+                for (int j = 0; j < Size.Y; j++)
+                {
+                    _currentCellState[i, j] = new Cell(new Point(i, j));
+                    _nextCellStates[i, j] = new Cell(new Point(i, j));
+                }
+            }
 
-		public void ClearGrid()
-		{
-			for (int x = 0; x < Size.X; x++)
-			{
-				for (int y = 0; y < Size.Y; y++)
-				{
-					_nextCellStates[x, y] = new Cell(new Point(x, y));
-				}
-			}
+            updateTimer = TimeSpan.Zero;
+        }
 
-			ApplyNewCellStates();
-		}
+        public void ClearGrid()
+        {
+            for (int x = 0; x < Size.X; x++)
+            {
+                for (int y = 0; y < Size.Y; y++)
+                {
+                    _nextCellStates[x, y] = new Cell(new Point(x, y));
+                }
+            }
 
-		public void Update(GameTime gameTime)
-		{		
-			foreach (Cell cell in _currentCellState)
+            ApplyNewCellStates();
+        }
+
+        public void Update(GameTime gameTime)
+        {
+            foreach (Cell cell in _currentCellState)
             {
                 cell.Update();
             }
@@ -81,153 +81,153 @@ namespace ExoGame2D.GameOfLife
 
             updateTimer += gameTime.ElapsedGameTime;
 
-			if (updateTimer.TotalMilliseconds > 1000f / GameLoop.GenerationsPerSecond)
-			{
-				updateTimer = TimeSpan.Zero;
-	
-				for (int i = 0; i < Size.X; i++)
-				{
-					for (int j = 0; j < Size.Y; j++)
-					{
-						// Check the cell's current state, count its living neighbors, and apply the rules to set its next state.
-						bool living = _currentCellState[i, j].IsAlive;
-						int count = CountAliveNeighbours(i, j);
+            if (updateTimer.TotalMilliseconds > 1000f / GameLoop.GenerationsPerSecond)
+            {
+                updateTimer = TimeSpan.Zero;
 
-						bool result = false;
-
-						if (living && count < 2)
-						{
-							result = false;
-						}
-
-						if (living && (count == 2 || count == 3))
-						{
-							result = true;
-						}
-
-						if (living && count > 3)
-						{
-							result = false;		
-						}
-
-						if (!living && count == 3)
-						{
-							result = true;
-						}
-                        
-						_nextCellStates[i, j].IsAlive = result;                
-                    }
-				}
-
-				ApplyNewCellStates();
-			}
-		}
-
-		private int CountAliveNeighbours(int x, int y)
-		{
-			int count = 0;
-
-			// Cells to the right.
-			if (x != Size.X - 1)
-			{
-				if (_currentCellState[x + 1, y].IsAlive)
-				{
-					count++;
-				}
-			}
-
-			// Celss to the bottom right.
-			if (x != Size.X - 1 && y != Size.Y - 1)
-			{
-				if (_currentCellState[x + 1, y + 1].IsAlive)
-				{
-					count++;
-				}
-			}
-
-			// Cells on the bottom.
-			if (y != Size.Y - 1)
-			{
-				if (_currentCellState[x, y + 1].IsAlive)
-				{
-					count++;
-				}
-			}
-
-			// Cells on the bottom left.
-			if (x != 0 && y != Size.Y - 1)
-			{
-				if (_currentCellState[x - 1, y + 1].IsAlive)
-				{
-					count++;
-				}
-			}
-
-			// Cells to the left.
-			if (x != 0)
-			{
-				if (_currentCellState[x - 1, y].IsAlive)
-				{
-					count++;
-				}
-			}
-
-			// Cells to the top left.
-			if (x != 0 && y != 0)
-			{
-				if (_currentCellState[x - 1, y - 1].IsAlive)
-				{
-					count++;
-				}
-			}
-
-			// Cells on top.
-			if (y != 0)
-			{
-				if (_currentCellState[x, y - 1].IsAlive)
-				{
-					count++;
-				}
-			}
-
-			// Cells to the top right.
-			if (x != Size.X - 1 && y != 0)
-			{
-				if (_currentCellState[x + 1, y - 1].IsAlive)
-				{
-					count++;
-				}
-			}
-
-			return count;
-		}
-
-		private void ApplyNewCellStates()
-		{
-			for (int i = 0; i < Size.X; i++)
-			{
-				for (int j = 0; j < Size.Y; j++)
-				{
-					// If the current cell state is dead and we are spawing a new cell there, set its generation left to live to max
-					if (!_currentCellState[i, j].IsAlive && _nextCellStates[i, j].IsAlive)
+                for (int i = 0; i < Size.X; i++)
+                {
+                    for (int j = 0; j < Size.Y; j++)
                     {
-						_currentCellState[i, j].IsAlive = _nextCellStates[i, j].IsAlive;
-						_currentCellState[i, j].GenerationsLeftToLive = 255;
-					}
+                        // Check the cell's current state, count its living neighbors, and apply the rules to set its next state.
+                        bool living = _currentCellState[i, j].IsAlive;
+                        int count = CountAliveNeighbours(i, j);
+
+                        bool result = false;
+
+                        if (living && count < 2)
+                        {
+                            result = false;
+                        }
+
+                        if (living && (count == 2 || count == 3))
+                        {
+                            result = true;
+                        }
+
+                        if (living && count > 3)
+                        {
+                            result = false;
+                        }
+
+                        if (!living && count == 3)
+                        {
+                            result = true;
+                        }
+
+                        _nextCellStates[i, j].IsAlive = result;
+                    }
+                }
+
+                ApplyNewCellStates();
+            }
+        }
+
+        private int CountAliveNeighbours(int x, int y)
+        {
+            int count = 0;
+
+            // Cells to the right.
+            if (x != Size.X - 1)
+            {
+                if (_currentCellState[x + 1, y].IsAlive)
+                {
+                    count++;
+                }
+            }
+
+            // Celss to the bottom right.
+            if (x != Size.X - 1 && y != Size.Y - 1)
+            {
+                if (_currentCellState[x + 1, y + 1].IsAlive)
+                {
+                    count++;
+                }
+            }
+
+            // Cells on the bottom.
+            if (y != Size.Y - 1)
+            {
+                if (_currentCellState[x, y + 1].IsAlive)
+                {
+                    count++;
+                }
+            }
+
+            // Cells on the bottom left.
+            if (x != 0 && y != Size.Y - 1)
+            {
+                if (_currentCellState[x - 1, y + 1].IsAlive)
+                {
+                    count++;
+                }
+            }
+
+            // Cells to the left.
+            if (x != 0)
+            {
+                if (_currentCellState[x - 1, y].IsAlive)
+                {
+                    count++;
+                }
+            }
+
+            // Cells to the top left.
+            if (x != 0 && y != 0)
+            {
+                if (_currentCellState[x - 1, y - 1].IsAlive)
+                {
+                    count++;
+                }
+            }
+
+            // Cells on top.
+            if (y != 0)
+            {
+                if (_currentCellState[x, y - 1].IsAlive)
+                {
+                    count++;
+                }
+            }
+
+            // Cells to the top right.
+            if (x != Size.X - 1 && y != 0)
+            {
+                if (_currentCellState[x + 1, y - 1].IsAlive)
+                {
+                    count++;
+                }
+            }
+
+            return count;
+        }
+
+        private void ApplyNewCellStates()
+        {
+            for (int i = 0; i < Size.X; i++)
+            {
+                for (int j = 0; j < Size.Y; j++)
+                {
+                    // If the current cell state is dead and we are spawing a new cell there, set its generation left to live to max
+                    if (!_currentCellState[i, j].IsAlive && _nextCellStates[i, j].IsAlive)
+                    {
+                        _currentCellState[i, j].IsAlive = _nextCellStates[i, j].IsAlive;
+                        _currentCellState[i, j].GenerationsLeftToLive = 255;
+                    }
                     else
                     {
-						_currentCellState[i, j].IsAlive = _nextCellStates[i, j].IsAlive;
-					}
-				}
-			}
-		}	
+                        _currentCellState[i, j].IsAlive = _nextCellStates[i, j].IsAlive;
+                    }
+                }
+            }
+        }
 
         public void Draw(GameTime gameTime)
         {
-			foreach (Cell cell in _currentCellState)
-			{
-				cell.Draw(Engine.SpriteBatch);
-			}
+            foreach (Cell cell in _currentCellState)
+            {
+                cell.Draw(Engine.SpriteBatch);
+            }
         }
 
         public void Draw(GameTime gameTime, Color tint)
@@ -237,12 +237,12 @@ namespace ExoGame2D.GameOfLife
 
         public ISprite GetSprite()
         {
-			throw new NotImplementedException();
-		}
+            throw new NotImplementedException();
+        }
 
         public bool IsAssetOfType(Type type)
         {
-			return GetType() == type;
-		}
+            return GetType() == type;
+        }
     }
 }
