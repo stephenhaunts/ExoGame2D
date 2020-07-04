@@ -42,14 +42,7 @@ namespace ExoGame2D.GameOfLife
             _currentCellState = new Cell[Size.X, Size.Y];
             _nextCellStates = new Cell[Size.X, Size.Y];
 
-            for (int i = 0; i < Size.X; i++)
-            {
-                for (int j = 0; j < Size.Y; j++)
-                {
-                    _currentCellState[i, j] = new Cell(new Point(i, j));
-                    _nextCellStates[i, j] = new Cell(new Point(i, j));
-                }
-            }
+            ClearGrid();
 
             updateTimer = TimeSpan.Zero;
         }
@@ -60,7 +53,8 @@ namespace ExoGame2D.GameOfLife
             {
                 for (int y = 0; y < Size.Y; y++)
                 {
-                    _nextCellStates[x, y] = new Cell(new Point(x, y));
+                    _currentCellState[x, y] = new Cell(new Point(x, y));
+                    _nextCellStates[x, y] = new Cell(new Point(x, y));                               
                 }
             }
 
@@ -70,8 +64,8 @@ namespace ExoGame2D.GameOfLife
         public void Update(GameTime gameTime)
         {
             foreach (Cell cell in _currentCellState)
-            {
-                cell.Update();
+            {             
+                cell.Update();          
             }
 
             if (GameLoop.Paused)
@@ -116,6 +110,15 @@ namespace ExoGame2D.GameOfLife
                         }
 
                         _nextCellStates[i, j].IsAlive = result;
+
+                        if (result)
+                        {
+                            _nextCellStates[i, j].Color -= 5;
+                            if (_nextCellStates[i, j].Color <= 0)
+                            {
+                                _nextCellStates[i, j].Color = 255;
+                            }
+                        }
                     }
                 }
 
@@ -208,16 +211,8 @@ namespace ExoGame2D.GameOfLife
             {
                 for (int j = 0; j < Size.Y; j++)
                 {
-                    // If the current cell state is dead and we are spawing a new cell there, set its generation left to live to max
-                    if (!_currentCellState[i, j].IsAlive && _nextCellStates[i, j].IsAlive)
-                    {
-                        _currentCellState[i, j].IsAlive = _nextCellStates[i, j].IsAlive;
-                        _currentCellState[i, j].GenerationsLeftToLive = 255;
-                    }
-                    else
-                    {
-                        _currentCellState[i, j].IsAlive = _nextCellStates[i, j].IsAlive;
-                    }
+                   _currentCellState[i, j].IsAlive = _nextCellStates[i, j].IsAlive;
+                   _currentCellState[i, j].Color = _nextCellStates[i, j].Color;
                 }
             }
         }

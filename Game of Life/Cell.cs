@@ -30,32 +30,20 @@ namespace ExoGame2D.GameOfLife
     {
         private Point _position { get; set; }
         private Rectangle _boundingBox { get; set; }
-        public int GenerationsLeftToLive = 255;
+
         public bool IsAlive { get; set; }
+        public int Color { get; set; }
 
         public Cell(Point position)
         {
-            GenerationsLeftToLive = 255;
             _position = position;
             _boundingBox = new Rectangle(_position.X * GameLoop.SingleCellSize, _position.Y * GameLoop.SingleCellSize, GameLoop.SingleCellSize, GameLoop.SingleCellSize);
-
+            Color = 255;
             IsAlive = false;
         }
 
         public void Update()
         {
-            if (!GameLoop.Paused)
-            {
-                if (IsAlive && GameLoop.ALLOW_CELL_DEGENERATION)
-                {
-                    GenerationsLeftToLive -= 1;
-                }
-
-                if (GenerationsLeftToLive <= 0)
-                {
-                    IsAlive = false;
-                }
-            }
 
             var point = Engine.ScreenToWorld(new Vector2(InputHelper.MousePosition.X, InputHelper.MousePosition.Y));
 
@@ -63,8 +51,7 @@ namespace ExoGame2D.GameOfLife
             {
                 if (InputHelper.MouseLeftButtonHeld())
                 {
-                    IsAlive = true;
-                    GenerationsLeftToLive = 255;
+                    IsAlive = true;               
                 }
                 else if (InputHelper.MouseRightButtonHeld())
                 {
@@ -77,7 +64,7 @@ namespace ExoGame2D.GameOfLife
         {
             if (IsAlive)
             {
-                spriteBatch.Draw(GameLoop.Pixel, _boundingBox, new Color(0, GenerationsLeftToLive, 0));
+                spriteBatch.Draw(GameLoop.Pixel, _boundingBox, new Color(0, Color, 0));
             }
         }
     }
