@@ -113,6 +113,11 @@ namespace ExoGame2D.Renderers
             }          
         }
 
+        public bool CollidesWith(ISprite sprite)
+        {
+            return PerPixelCollision((Sprite)sprite, this);
+        }
+
         public void Play()
         {
             PlayState = AnimationPlayingStateEnum.Playing;

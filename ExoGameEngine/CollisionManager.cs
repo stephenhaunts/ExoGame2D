@@ -46,8 +46,21 @@ namespace ExoGame2D
         {
             ISprite sourceSprite = _spriteList[source];
             ISprite destinationSprite = _spriteList[destination];
-
+            
             return sourceSprite.BoundingBox.Intersects(destinationSprite.BoundingBox);
+        }
+
+        public static bool IsPerPixelCollision(string source, string destination)
+        {
+            ISprite sourceSprite = _spriteList[source];
+            ISprite destinationSprite = _spriteList[destination];
+
+            if (sourceSprite.BoundingBox.Intersects(destinationSprite.BoundingBox))
+            {
+                return sourceSprite.CollidesWith(destinationSprite);
+            }
+
+            return false;
         }
 
         public static void RemoveAll()

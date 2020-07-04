@@ -42,5 +42,6 @@ namespace ExoGame2D.Interfaces
         Rectangle Dimensions { get; }
         Rectangle BoundingBox { get; }
         void LoadContent(string textureName);
+        bool CollidesWith(ISprite sprite);
     }
 }

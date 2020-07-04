@@ -45,6 +45,22 @@ namespace ExoGame2D.Renderers
             Name = name;
         }
 
+        public bool CollidesWith(ISprite sprite)
+        {
+            if (sprite is Sprite)
+            {
+                return PerPixelCollision(this, (Sprite)sprite);
+            }
+
+            if (sprite is AnimatedSprite)
+            {
+                return PerPixelCollision(this, (AnimatedSprite)sprite);
+            }
+
+
+            return false;
+        }
+
         public new void Update(GameTime gameTime)
         {        
             base.Update(gameTime);

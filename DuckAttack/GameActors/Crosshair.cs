@@ -46,17 +46,6 @@ namespace ExoGame2D.DuckAttack.GameActors
 
         public void Draw(GameTime gameTime)
         {
-            //var mouse = Engine.ScreenToWorld(new Vector2(InputHelper.MousePosition.X, InputHelper.MousePosition.Y));
-
-            //var source = new Vector2(0, (int)mouse.Y);
-            //var dest = new Vector2((int)Engine.ScaledViewPort.X, (int)mouse.Y);
-
-            //var source2 = new Vector2(mouse.X, 0);
-            //var dest2 = new Vector2(mouse.X, Engine.ScaledViewPort.Y + 100);
-
-            //Engine.SpriteBatch.DrawLine(source, dest, Color.GreenYellow, 1);
-            //Engine.SpriteBatch.DrawLine(source2, dest2, Color.GreenYellow, 1);
-
             _crosshair.Draw(gameTime, Color.White);
         }
 

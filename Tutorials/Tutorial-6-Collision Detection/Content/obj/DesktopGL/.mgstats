@@ -1,0 +1,3 @@
+Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"/Users/stephenhaunts/Documents/Git/ExoGameEngine/Tutorials/Tutorial-6-Collision Detection/Content/crosshair.png","/Users/stephenhaunts/Documents/Git/ExoGameEngine/Tutorials/Tutorial-6-Collision Detection/Content/bin/DesktopGL/crosshair.xnb","TextureProcessor","Texture2DContent",161,4181,0.300225
+"/Users/stephenhaunts/Documents/Git/ExoGameEngine/Tutorials/Tutorial-6-Collision Detection/Content/ExoEngineLogo.png","/Users/stephenhaunts/Documents/Git/ExoGameEngine/Tutorials/Tutorial-6-Collision Detection/Content/bin/DesktopGL/ExoEngineLogo.xnb","TextureProcessor","Texture2DContent",81541,2370901,0.071896

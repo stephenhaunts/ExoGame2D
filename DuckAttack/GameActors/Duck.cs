@@ -76,7 +76,7 @@ namespace ExoGame2D.DuckAttack.GameActors
             BoundDuckOffWalls();
 
             // Shoot the duck
-            if ((InputHelper.MouseLeftButtonPressed()) && (CollisionManager.IsCollision("crosshair", Name)))
+            if ((InputHelper.MouseLeftButtonPressed()) && (CollisionManager.IsPerPixelCollision("crosshair", Name)))
             {
                 Engine.CurrentScene.RemoveSpriteFromLayer(RenderLayerEnum.LAYER2, this);
 
