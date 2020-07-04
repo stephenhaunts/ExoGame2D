@@ -21,6 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
+using ExoGame2D.Renderers;
 using ExoGame2D.SceneManagement;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -36,14 +37,19 @@ namespace ExoGame2D.GameOfLife
         private const int NumberCellsHorizontal = 200;
         private const int NumberCellsVertical = 49 * 2;
         public static bool Paused = true;
+        public static bool Help = true;
+
         public static Texture2D Pixel;
         private Grid grid;
         private readonly Scene _scene;
+        private readonly FontRender _helpFont;
 
         public GameLoop()
         {
             Engine.InitializeEngine(this, 1920, 1080);
             IsMouseVisible = true;
+
+            _helpFont = new FontRender("help");
             _scene = new Scene();
         }
 
@@ -51,6 +57,18 @@ namespace ExoGame2D.GameOfLife
         {
             base.Initialize();
             grid = new Grid(NumberCellsHorizontal, NumberCellsVertical) { Name = "Grid" };
+
+            _helpFont.LoadContent("File");
+            _helpFont.Location = new Vector2(20, 20);
+            _helpFont.Shadow = true;
+            _helpFont.Text = "Exo Game 2D - Conways Game of Life" + System.Environment.NewLine +
+                             "--------------------------------------------" + System.Environment.NewLine + System.Environment.NewLine +
+                             "<h> Toggle Help" + System.Environment.NewLine +
+                             "<f> Toggle Fullscreen" + System.Environment.NewLine +
+                             "<backspace> Clear grid" + System.Environment.NewLine +
+                             "<space> Pause cells" + System.Environment.NewLine;
+
+            _scene.AddSpriteToLayer(RenderLayerEnum.LAYER2, _helpFont);
             _scene.AddSpriteToLayer(RenderLayerEnum.LAYER1, grid);
         }
 
@@ -83,6 +101,20 @@ namespace ExoGame2D.GameOfLife
             if (InputHelper.KeyPressed(Keys.Back))
             {
                 grid.ClearGrid();
+            }
+
+            if (InputHelper.KeyPressed(Keys.H))
+            {
+                Help = !Help;
+
+                if (Help)
+                {                    
+                    _scene.AddSpriteToLayer(RenderLayerEnum.LAYER2, _helpFont);
+                }
+                else
+                {
+                    _scene.RemoveSpriteFromLayer(RenderLayerEnum.LAYER2, _helpFont);
+                }
             }
 
             grid.Update(gameTime);
