@@ -52,6 +52,8 @@ namespace ExoGame2D.DuckAttack.GameStates
             _crosshair = new MenuCursor();
             _background = new Background();
 
+            MusicPlayer.LoadMusic("banjo");
+
             _fontY = -200;
             _titles = new FontRender("Titles");
             _titles.LoadContent("titlescreen");
@@ -105,6 +107,9 @@ namespace ExoGame2D.DuckAttack.GameStates
             _scene.AddSpriteToLayer(RenderLayerEnum.LAYER2, _titles);
             _scene.AddSpriteToLayer(RenderLayerEnum.LAYER5, _crosshair);
             _scene.AddSpriteToLayer(RenderLayerEnum.LAYER4, _container);
+
+            MusicPlayer.Play("banjo");
+            MusicPlayer.Looped = true;
         }
 
         

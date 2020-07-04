@@ -58,7 +58,7 @@ namespace ExoGame2D.Tutorials.Tutorial6_CollisionDetection
             _crosshair.LoadContent("crosshair");
             _logo.LoadContent("ExoEngineLogo");
             _logo.Location = new Vector2(100, 100);
-
+            
             _scene.AddSpriteToLayer(RenderLayerEnum.LAYER1, _logo);
             _scene.AddSpriteToLayer(RenderLayerEnum.LAYER5, _crosshair);
         }

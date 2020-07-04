@@ -25,6 +25,12 @@
 /processorParam:TextureFormat=Color
 /build:background.jpg
 
+#begin banjo.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:banjo.mp3
+
 #begin ButtonBackground.png
 /importer:TextureImporter
 /processor:TextureProcessor
