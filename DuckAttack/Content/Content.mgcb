@@ -74,6 +74,18 @@
 /processorParam:TextureFormat=Compressed
 /build:Default.spritefont;default.spritefont
 
+#begin DuckDeath.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:DuckDeath.png
+
 #begin DuckFrame1.png
 /importer:TextureImporter
 /processor:TextureProcessor

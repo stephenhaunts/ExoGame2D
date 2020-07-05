@@ -43,6 +43,7 @@ namespace ExoGame2D.DuckAttack.GameActors
     public class Duck : IRenderNode
     {
         private AnimatedSprite _duck;
+        private Sprite _duckDeath;
         public Rectangle Crosshair { get; set; }
         public string Name { get; set; }
         public DuckStateEnum State { get; set; }
@@ -51,6 +52,9 @@ namespace ExoGame2D.DuckAttack.GameActors
         public Duck(string name, int x, int y)
         {
             Name = name;
+
+            _duckDeath = new Sprite("DuckDeath");
+            _duckDeath.LoadContent("DuckDeath");
 
             _duck = new AnimatedSprite()
             {
@@ -81,6 +85,9 @@ namespace ExoGame2D.DuckAttack.GameActors
         public Duck(string name, int x, bool flip, int vx, int vy)
         {
             Name = name;
+
+            _duckDeath = new Sprite("DuckDeath");
+            _duckDeath.LoadContent("DuckDeath");
 
             _duck = new AnimatedSprite()
             {
@@ -145,7 +152,10 @@ namespace ExoGame2D.DuckAttack.GameActors
                     break;
 
                 case DuckStateEnum.Dead:
-                   // Engine.CurrentScene.RemoveSpriteFromLayer(RenderLayerEnum.LAYER2, this);
+                    // Engine.CurrentScene.RemoveSpriteFromLayer(RenderLayerEnum.LAYER2, this);
+                    _duckDeath.X = _duck.X;
+                    _duckDeath.Y = _duck.Y;
+                      
                     break;
 
                 case DuckStateEnum.FlyAway:
@@ -194,14 +204,31 @@ namespace ExoGame2D.DuckAttack.GameActors
 
         public void Draw(GameTime gameTime)
         {
-            if (CollisionManager.IsCollision("crosshair", Name))
+            switch (State)
             {
-                _duck.Draw(gameTime, new Color(100,100,100, 255));
+                case DuckStateEnum.Start:
+                    break;
+
+                case DuckStateEnum.Fying:
+                    if (CollisionManager.IsCollision("crosshair", Name))
+                    {
+                        _duck.Draw(gameTime, new Color(100, 100, 100, 255));
+                    }
+                    else
+                    {
+                        _duck.Draw(gameTime, new Color(255, 255, 255, 255));
+                    }
+                    break;
+
+                case DuckStateEnum.FlyAway:
+                    break;
+
+                case DuckStateEnum.Dead:
+                    _duckDeath.Draw(gameTime, new Color(255, 255, 255, 255));
+                    break;
             }
-            else
-            {
-                _duck.Draw(gameTime, new Color(255, 255, 255, 255));
-            }
+
+
         }
 
         public void Draw(GameTime gameTime, Color tint)
