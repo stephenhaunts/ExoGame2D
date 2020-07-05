@@ -115,7 +115,7 @@ namespace ExoGame2D.DuckAttack.GameStates
             }
 
 
-            if (_gameClock.ElapsedMilliseconds > 3000)
+            if (_gameClock.ElapsedMilliseconds > 1000)
             {
                 if (_duck.State == DuckStateEnum.Start)
                 {
@@ -123,7 +123,7 @@ namespace ExoGame2D.DuckAttack.GameStates
                 }
             }
 
-            if (_gameClock.ElapsedMilliseconds > 5000)
+            if (_gameClock.ElapsedMilliseconds > 3000)
             {
                 if (_duck2.State == DuckStateEnum.Start)
                 {
@@ -131,7 +131,7 @@ namespace ExoGame2D.DuckAttack.GameStates
                 }
             }
 
-            if (_gameClock.ElapsedMilliseconds > 7000)
+            if (_gameClock.ElapsedMilliseconds > 5000)
             {
                 if (_duck3.State == DuckStateEnum.Start)
                 {
@@ -139,7 +139,7 @@ namespace ExoGame2D.DuckAttack.GameStates
                 }
             }
 
-            if (_gameClock.ElapsedMilliseconds > 9000)
+            if (_gameClock.ElapsedMilliseconds > 7000)
             {
                 if (_duck4.State == DuckStateEnum.Start)
                 {

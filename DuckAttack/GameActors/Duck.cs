@@ -22,10 +22,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 using System;
-using ExoGame2D;
 using ExoGame2D.Interfaces;
 using ExoGame2D.Renderers;
-using ExoGame2D.SceneManagement;
 using ExoGame2D.DuckAttack.Messages;
 using Microsoft.Xna.Framework;
 using System.Diagnostics;
@@ -37,17 +35,23 @@ namespace ExoGame2D.DuckAttack.GameActors
         Start = 0,
         Fying,
         Dead,
-        FlyAway
+        FlyAway,
+        Dive,
+        Finished
     }
 
     public class Duck : IRenderNode
     {
         private AnimatedSprite _duck;
         private Sprite _duckDeath;
+        private Sprite _duckDive;
+
         public Rectangle Crosshair { get; set; }
         public string Name { get; set; }
         public DuckStateEnum State { get; set; }
         private Stopwatch _duckClock = new Stopwatch();
+        private int _deathCounter = 0;
+        private int _duckFlashCounter = 0;
 
         public Duck(string name, int x, int y)
         {
@@ -55,6 +59,9 @@ namespace ExoGame2D.DuckAttack.GameActors
 
             _duckDeath = new Sprite("DuckDeath");
             _duckDeath.LoadContent("DuckDeath");
+
+            _duckDive = new Sprite("DuckDive");
+            _duckDive.LoadContent("DuckDive");
 
             _duck = new AnimatedSprite()
             {
@@ -88,6 +95,9 @@ namespace ExoGame2D.DuckAttack.GameActors
 
             _duckDeath = new Sprite("DuckDeath");
             _duckDeath.LoadContent("DuckDeath");
+
+            _duckDive = new Sprite("DuckDive");
+            _duckDive.LoadContent("DuckDive");
 
             _duck = new AnimatedSprite()
             {
@@ -155,11 +165,19 @@ namespace ExoGame2D.DuckAttack.GameActors
                     // Engine.CurrentScene.RemoveSpriteFromLayer(RenderLayerEnum.LAYER2, this);
                     _duckDeath.X = _duck.X;
                     _duckDeath.Y = _duck.Y;
-                      
+
+                    _duckDive.X = _duck.X;
+                    _duckDive.Y = _duck.Y;
+
                     break;
 
                 case DuckStateEnum.FlyAway:
                     _duck.Update(gameTime);
+
+                    if (DuckOutOfBounds(_duck))
+                    {
+                        State = DuckStateEnum.Finished;
+                    }
 
                     // Shoot the duck
                     if ((InputHelper.MouseLeftButtonPressed()) && (CollisionManager.IsCollision("crosshair", Name)))
@@ -173,8 +191,46 @@ namespace ExoGame2D.DuckAttack.GameActors
                     }
                     break;
 
+                case DuckStateEnum.Dive:
+                    _duckDive.Update(gameTime);
+                    _duckDive.Velocity = new Vector2(0, 15);
+
+                    if (DuckOutOfBounds(_duckDive))
+                    {
+                        State = DuckStateEnum.Finished;
+                    }
+                    break;
+
+                case DuckStateEnum.Finished:
+                    
+                    break;
+
             }
-            
+        }
+
+        private bool DuckOutOfBounds(ISprite sprite)
+        {
+            if (sprite.X + sprite.Width > Engine.ScaledViewPort.X + 100)
+            {
+                return true;
+            }
+
+            if (sprite.X < -100)
+            {
+                return true;
+            }
+
+            if (sprite.Y + (sprite.Height) > Engine.ScaledViewPort.Y )
+            {
+                return true;
+            }
+
+            if (sprite.Y < -100)
+            {
+                return true;
+            }
+
+            return false;
         }
 
         private void BoundDuckOffWalls()
@@ -221,10 +277,42 @@ namespace ExoGame2D.DuckAttack.GameActors
                     break;
 
                 case DuckStateEnum.FlyAway:
+                    if (CollisionManager.IsCollision("crosshair", Name))
+                    {
+                        _duck.Draw(gameTime, new Color(100, 100, 100, 255));
+                    }
+                    else
+                    {
+                        _duck.Draw(gameTime, new Color(255, 255, 255, 255));
+                    }
                     break;
 
                 case DuckStateEnum.Dead:
-                    _duckDeath.Draw(gameTime, new Color(255, 255, 255, 255));
+                    _deathCounter++;
+
+                    if (_deathCounter < 5)
+                    {
+                        _duckDeath.Draw(gameTime, new Color(255, 255, 255, 255));
+                    }
+                    else
+                    {
+                        _duckDeath.Draw(gameTime, new Color(150, 150, 150, 255));
+                    }
+
+                    if (_deathCounter >= 10)
+                    {
+                        _deathCounter = 0;
+                        _duckFlashCounter++;
+                    }
+
+                    if (_duckFlashCounter == 5)
+                    {
+                        State = DuckStateEnum.Dive;
+                    }
+                    break;
+
+                case DuckStateEnum.Dive:
+                    _duckDive.Draw(gameTime, new Color(255, 255, 255, 255));
                     break;
             }
 
