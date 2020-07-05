@@ -63,7 +63,7 @@ namespace ExoGame2D.DuckAttack.GameStates
 
             _container = new UIContainer("MainMenu");
 
-            int startYPosition = 600;
+            int startYPosition = 450;
 
             _playGameButton = new Button("PlayGameButton", new NewGameButtonHandler())
             {

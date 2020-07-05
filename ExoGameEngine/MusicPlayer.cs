@@ -29,12 +29,6 @@ using Microsoft.Xna.Framework.Media;
 
 namespace ExoGame2D
 {
-    public enum MusicPlayStateEnum
-    {
-        Stopped = 0,
-        Playing,
-        Paused
-    }
 
     public static class MusicPlayer
     {

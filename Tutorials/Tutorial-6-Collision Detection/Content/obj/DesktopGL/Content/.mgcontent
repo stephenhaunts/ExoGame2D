@@ -4,8 +4,8 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>/Users/stephenhaunts/Documents/Git/ExoGameEngine/Tutorials/Tutorial-4-Tracking the Mouse/Content/crosshair.png</File>
-    <File>/Users/stephenhaunts/Documents/Git/ExoGameEngine/Tutorials/Tutorial-4-Tracking the Mouse/Content/ExoEngineLogo.png</File>
+    <File>/Users/stephenhaunts/Documents/Git/ExoGameEngine/Tutorials/Tutorial-6-Collision Detection/Content/crosshair.png</File>
+    <File>/Users/stephenhaunts/Documents/Git/ExoGameEngine/Tutorials/Tutorial-6-Collision Detection/Content/ExoEngineLogo.png</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />

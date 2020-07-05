@@ -28,14 +28,25 @@ using ExoGame2D.Renderers;
 using ExoGame2D.SceneManagement;
 using ExoGame2D.DuckAttack.Messages;
 using Microsoft.Xna.Framework;
+using System.Diagnostics;
 
 namespace ExoGame2D.DuckAttack.GameActors
 {
+    public enum DuckStateEnum
+    {
+        Start = 0,
+        Fying,
+        Dead,
+        FlyAway
+    }
+
     public class Duck : IRenderNode
     {
         private AnimatedSprite _duck;
         public Rectangle Crosshair { get; set; }
         public string Name { get; set; }
+        public DuckStateEnum State { get; set; }
+        private Stopwatch _duckClock = new Stopwatch();
 
         public Duck(string name, int x, int y)
         {
@@ -52,12 +63,44 @@ namespace ExoGame2D.DuckAttack.GameActors
             _duck.LoadFrameTexture("DuckFrame3");
 
             _duck.Velocity = new Vector2(7, 5);
+            _duck.Flip = false;
             _duck.Location = new Vector2(x, y);
             _duck.IsVisible = true;
             _duck.IsEnabled = true;
             _duck.AnimationType = AnimationTypeEnum.PingPong;
             _duck.AnimationSpeed = 5;
             _duck.Play();
+            State = DuckStateEnum.Start;
+
+            Channels.AddNewChannel("score");
+
+            SoundEffectPlayer.LoadSoundEffect("scream");
+        }
+
+
+        public Duck(string name, int x, bool flip, int vx, int vy)
+        {
+            Name = name;
+
+            _duck = new AnimatedSprite()
+            {
+                RenderBoundingBox = false,
+                Name = name
+            };
+
+            _duck.LoadFrameTexture("DuckFrame1");
+            _duck.LoadFrameTexture("DuckFrame2");
+            _duck.LoadFrameTexture("DuckFrame3");
+
+            _duck.Velocity = new Vector2(vx, vy);
+            _duck.Flip = flip;
+            _duck.Location = new Vector2(x, 900);
+            _duck.IsVisible = true;
+            _duck.IsEnabled = true;
+            _duck.AnimationType = AnimationTypeEnum.PingPong;
+            _duck.AnimationSpeed = 5;
+            _duck.Play();
+            State = DuckStateEnum.Start;
 
             Channels.AddNewChannel("score");
 
@@ -71,22 +114,57 @@ namespace ExoGame2D.DuckAttack.GameActors
 
         public void Update(GameTime gameTime)
         {
-            _duck.Update(gameTime);
-
-            BoundDuckOffWalls();
-
-            // Shoot the duck
-            //if ((InputHelper.MouseLeftButtonPressed()) && (CollisionManager.IsPerPixelCollision("crosshair", Name)))
-            if ((InputHelper.MouseLeftButtonPressed()) && (CollisionManager.IsCollision("crosshair", Name)))
+            switch (State)
             {
-                Engine.CurrentScene.RemoveSpriteFromLayer(RenderLayerEnum.LAYER2, this);
+                case DuckStateEnum.Start:
+                    break;
 
-                // Post message to the score board.
-                ScoreMessage message = new ScoreMessage() { ScoreIncrement = 10 };
-                Channels.PostMessage("score", message);
+                case DuckStateEnum.Fying:
+                    _duck.Update(gameTime);
+                    _duckClock.Start();
+                    if (_duckClock.ElapsedMilliseconds > 1000)
+                    {
+                        BoundDuckOffWalls();
+                    }
 
-                Channels.PostMessage("soundeffects", new SoundEffectMessage() { SoundEffectToPlay = "scream" });
+                    if (_duckClock.ElapsedMilliseconds > 6000)
+                    {
+                        State = DuckStateEnum.FlyAway;
+                    }
+
+                    // Shoot the duck
+                    if ((InputHelper.MouseLeftButtonPressed()) && (CollisionManager.IsCollision("crosshair", Name)))
+                    {
+                        // Post message to the score board.
+                        ScoreMessage message = new ScoreMessage() { ScoreIncrement = 10 };
+                        Channels.PostMessage("score", message);
+
+                        Channels.PostMessage("soundeffects", new SoundEffectMessage() { SoundEffectToPlay = "scream" });
+                        State = DuckStateEnum.Dead;
+                    }
+                    break;
+
+                case DuckStateEnum.Dead:
+                   // Engine.CurrentScene.RemoveSpriteFromLayer(RenderLayerEnum.LAYER2, this);
+                    break;
+
+                case DuckStateEnum.FlyAway:
+                    _duck.Update(gameTime);
+
+                    // Shoot the duck
+                    if ((InputHelper.MouseLeftButtonPressed()) && (CollisionManager.IsCollision("crosshair", Name)))
+                    {                      
+                        // Post message to the score board.
+                        ScoreMessage message = new ScoreMessage() { ScoreIncrement = 10 };
+                        Channels.PostMessage("score", message);
+
+                        Channels.PostMessage("soundeffects", new SoundEffectMessage() { SoundEffectToPlay = "scream" });
+                        State = DuckStateEnum.Dead;
+                    }
+                    break;
+
             }
+            
         }
 
         private void BoundDuckOffWalls()

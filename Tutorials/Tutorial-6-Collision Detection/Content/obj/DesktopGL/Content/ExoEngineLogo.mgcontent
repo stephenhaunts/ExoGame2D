@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>/Users/stephenhaunts/Documents/Git/ExoGameEngine/Tutorials/Tutorial-4-Tracking the Mouse/Content/ExoEngineLogo.png</SourceFile>
+  <SourceFile>/Users/stephenhaunts/Documents/Git/ExoGameEngine/Tutorials/Tutorial-6-Collision Detection/Content/ExoEngineLogo.png</SourceFile>
   <SourceTime>2020-06-19T11:08:14+01:00</SourceTime>
-  <DestFile>/Users/stephenhaunts/Documents/Git/ExoGameEngine/Tutorials/Tutorial-4-Tracking the Mouse/Content/bin/DesktopGL/Content/ExoEngineLogo.xnb</DestFile>
-  <DestTime>2020-07-04T12:35:06.4940661+01:00</DestTime>
+  <DestFile>/Users/stephenhaunts/Documents/Git/ExoGameEngine/Tutorials/Tutorial-6-Collision Detection/Content/bin/DesktopGL/Content/ExoEngineLogo.xnb</DestFile>
+  <DestTime>2020-07-04T18:35:13.1057375+01:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-08-05T16:49:54+01:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
