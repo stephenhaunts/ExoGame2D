@@ -30,16 +30,6 @@ using System.Diagnostics;
 
 namespace ExoGame2D.DuckAttack.GameActors
 {
-    public enum DuckStateEnum
-    {
-        Start = 0,
-        Fying,
-        Dead,
-        FlyAway,
-        Dive,
-        Finished
-    }
-
     public class Duck : IRenderNode
     {
         private AnimatedSprite _duck;
@@ -162,7 +152,6 @@ namespace ExoGame2D.DuckAttack.GameActors
                     break;
 
                 case DuckStateEnum.Dead:
-                    // Engine.CurrentScene.RemoveSpriteFromLayer(RenderLayerEnum.LAYER2, this);
                     _duckDeath.X = _duck.X;
                     _duckDeath.Y = _duck.Y;
 
@@ -315,8 +304,6 @@ namespace ExoGame2D.DuckAttack.GameActors
                     _duckDive.Draw(gameTime, new Color(255, 255, 255, 255));
                     break;
             }
-
-
         }
 
         public void Draw(GameTime gameTime, Color tint)

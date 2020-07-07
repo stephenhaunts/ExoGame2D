@@ -34,6 +34,8 @@ namespace ExoGame2D.DuckAttack
         public GameLoop()
         {
             Engine.InitializeEngine(this, 1920, 1080);
+            //Engine.InitializeEngine(this, 1280, 720);
+
             IsMouseVisible = false;
         }
 

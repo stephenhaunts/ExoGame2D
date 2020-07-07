@@ -29,6 +29,7 @@ using ExoGame2D.DuckAttack.GameActors;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using System.Diagnostics;
+using ExoGame2D.DuckAttack.GameActors.Hud;
 
 namespace ExoGame2D.DuckAttack.GameStates
 {
@@ -46,6 +47,7 @@ namespace ExoGame2D.DuckAttack.GameStates
         private readonly ScoreBoard _score;
         private Stopwatch _gameClock = new Stopwatch();
 
+        private Hud _hud;
 
         public PlayingGameState()
         {
@@ -59,10 +61,13 @@ namespace ExoGame2D.DuckAttack.GameStates
             _fps.Location = new Vector2(40, Engine.ScaledViewPort.Y - 50);
 
             _score = new ScoreBoard("score board");
-            _scene.AddSpriteToLayer(RenderLayerEnum.LAYER1, _background);
 
+            _hud = new Hud("Hud");
+
+            _scene.AddSpriteToLayer(RenderLayerEnum.LAYER1, _background);
             _scene.AddSpriteToLayer(RenderLayerEnum.LAYER4, _fps);
             _scene.AddSpriteToLayer(RenderLayerEnum.LAYER4, _score);
+            _scene.AddSpriteToLayer(RenderLayerEnum.LAYER4, _hud);
             _scene.AddSpriteToLayer(RenderLayerEnum.LAYER5, _crosshair);
         }
 

@@ -43,6 +43,7 @@
     <Folder Include="GameStates\" />
     <Folder Include="MainMenuActors\" />
     <Folder Include="GameStates\UI Button Handlers\" />
+    <Folder Include="GameActors\Hud\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ExoGameEngine\ExoGame2D.csproj" />
