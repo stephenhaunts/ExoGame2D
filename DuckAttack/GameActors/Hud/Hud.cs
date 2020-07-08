@@ -33,14 +33,9 @@ namespace ExoGame2D.DuckAttack.GameActors.Hud
     {
         private const int MAX_NUMBER_DUCKS = 12;
         private DuckIndicator[] _duckIndicator = new DuckIndicator[MAX_NUMBER_DUCKS];
-
         private static BulletIndicator[] _bulletIndicator = new BulletIndicator[8];
-
-
         private int _numberDucksShot = 0;
-
         private const int MAX_SHOTS = 8;
-
         public static int NumShotsLeft = 8;
 
         public Hud(string name)

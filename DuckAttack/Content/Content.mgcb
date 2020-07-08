@@ -91,6 +91,12 @@
 /processorParam:TextureFormat=Color
 /build:daffy.png
 
+#begin death.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:death.wav
+
 #begin Default.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
@@ -194,12 +200,24 @@
 /processorParam:TextureFormat=Color
 /build:duckhudshot.png
 
+#begin falling.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:falling.wav
+
 #begin File.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
 /processorParam:PremultiplyAlpha=True
 /processorParam:TextureFormat=Compressed
 /build:File.spritefont;headsup.spritefont
+
+#begin flapping.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:flapping.wav
 
 #begin gunclick.wav
 /importer:WavImporter
@@ -218,6 +236,12 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:images.jpeg
+
+#begin quaks.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:quaks.wav
 
 #begin scream.wav
 /importer:WavImporter

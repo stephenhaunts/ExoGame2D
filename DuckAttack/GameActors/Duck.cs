@@ -74,7 +74,10 @@ namespace ExoGame2D.DuckAttack.GameActors
             _duck.Play();
             State = DuckStateEnum.Start;
           
-            SoundEffectPlayer.LoadSoundEffect("scream");
+            SoundEffectPlayer.LoadSoundEffect("death");
+            SoundEffectPlayer.LoadSoundEffect("quaks");
+            SoundEffectPlayer.LoadSoundEffect("falling");
+            SoundEffectPlayer.LoadSoundEffect("flapping");
         }
 
 
@@ -108,13 +111,20 @@ namespace ExoGame2D.DuckAttack.GameActors
             _duck.Play();
             State = DuckStateEnum.Start;
 
-            SoundEffectPlayer.LoadSoundEffect("scream");
+            SoundEffectPlayer.LoadSoundEffect("death");
+            SoundEffectPlayer.LoadSoundEffect("quaks");
+            SoundEffectPlayer.LoadSoundEffect("falling");
+            SoundEffectPlayer.LoadSoundEffect("flapping");
         }
 
         public ISprite GetSprite()
         {
             return _duck;
         }
+
+
+        private bool _playDuckSound = false;
+        private bool _playFallingSound = false;
 
         public void Update(GameTime gameTime)
         {
@@ -126,6 +136,15 @@ namespace ExoGame2D.DuckAttack.GameActors
                 case DuckStateEnum.Fying:
                     _duck.Update(gameTime);
                     _duckClock.Start();
+
+                    if (!_playDuckSound)
+                    {
+                        Channels.PostMessage("soundeffects", new SoundEffectMessage() { SoundEffectToPlay = "quaks" });
+                        Channels.PostMessage("soundeffects", new SoundEffectMessage() { SoundEffectToPlay = "flapping" });
+
+                        _playDuckSound = true;
+                    }
+
                     if (_duckClock.ElapsedMilliseconds > 1000)
                     {
                         BoundDuckOffWalls();
@@ -148,7 +167,7 @@ namespace ExoGame2D.DuckAttack.GameActors
                             DuckHitMessage duckHitMessage = new DuckHitMessage() { State = DuckIndicatorStateEnum.Hit };
                             Channels.PostMessage("duckhit", duckHitMessage);
 
-                            Channels.PostMessage("soundeffects", new SoundEffectMessage() { SoundEffectToPlay = "scream" });
+                            Channels.PostMessage("soundeffects", new SoundEffectMessage() { SoundEffectToPlay = "death" });
                             State = DuckStateEnum.Dead;
                         }
                     }
@@ -185,7 +204,7 @@ namespace ExoGame2D.DuckAttack.GameActors
                             DuckHitMessage duckHitMessage = new DuckHitMessage() { State = DuckIndicatorStateEnum.Hit };
                             Channels.PostMessage("duckhit", duckHitMessage);
 
-                            Channels.PostMessage("soundeffects", new SoundEffectMessage() { SoundEffectToPlay = "scream" });
+                            Channels.PostMessage("soundeffects", new SoundEffectMessage() { SoundEffectToPlay = "death" });
                             State = DuckStateEnum.Dead;
                         }
                     }
@@ -194,6 +213,12 @@ namespace ExoGame2D.DuckAttack.GameActors
                 case DuckStateEnum.Dive:
                     _duckDive.Update(gameTime);
                     _duckDive.Velocity = new Vector2(0, 15);
+
+                    if (!_playFallingSound)
+                    {
+                        Channels.PostMessage("soundeffects", new SoundEffectMessage() { SoundEffectToPlay = "falling" });
+                        _playFallingSound = true;
+                    }
 
                     if (DuckOutOfBounds(_duckDive))
                     {
