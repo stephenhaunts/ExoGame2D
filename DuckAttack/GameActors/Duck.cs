@@ -73,10 +73,7 @@ namespace ExoGame2D.DuckAttack.GameActors
             _duck.AnimationSpeed = 5;
             _duck.Play();
             State = DuckStateEnum.Start;
-
-            Channels.AddNewChannel("score");
-            Channels.AddNewChannel("duckhit");
-
+          
             SoundEffectPlayer.LoadSoundEffect("scream");
         }
 
@@ -111,9 +108,6 @@ namespace ExoGame2D.DuckAttack.GameActors
             _duck.Play();
             State = DuckStateEnum.Start;
 
-            Channels.AddNewChannel("score");
-            Channels.AddNewChannel("duckhit");
-
             SoundEffectPlayer.LoadSoundEffect("scream");
         }
 
@@ -145,15 +139,18 @@ namespace ExoGame2D.DuckAttack.GameActors
                     // Shoot the duck
                     if ((InputHelper.MouseLeftButtonPressed()) && (CollisionManager.IsCollision("crosshair", Name)))
                     {
-                        // Post message to the score board.
-                        ScoreMessage message = new ScoreMessage() { ScoreIncrement = 10 };
-                        Channels.PostMessage("score", message);
+                        if (Hud.Hud.NumShotsLeft > 0)
+                        {
+                            // Post message to the score board.
+                            ScoreMessage message = new ScoreMessage() { ScoreIncrement = 10 };
+                            Channels.PostMessage("score", message);
 
-                        DuckHitMessage duckHitMessage = new DuckHitMessage() { State = DuckIndicatorStateEnum.Hit };
-                        Channels.PostMessage("duckhit", duckHitMessage);
+                            DuckHitMessage duckHitMessage = new DuckHitMessage() { State = DuckIndicatorStateEnum.Hit };
+                            Channels.PostMessage("duckhit", duckHitMessage);
 
-                        Channels.PostMessage("soundeffects", new SoundEffectMessage() { SoundEffectToPlay = "scream" });
-                        State = DuckStateEnum.Dead;
+                            Channels.PostMessage("soundeffects", new SoundEffectMessage() { SoundEffectToPlay = "scream" });
+                            State = DuckStateEnum.Dead;
+                        }
                     }
                     break;
 
@@ -178,16 +175,19 @@ namespace ExoGame2D.DuckAttack.GameActors
 
                     // Shoot the duck
                     if ((InputHelper.MouseLeftButtonPressed()) && (CollisionManager.IsCollision("crosshair", Name)))
-                    {                      
-                        // Post message to the score board.
-                        ScoreMessage message = new ScoreMessage() { ScoreIncrement = 10 };
-                        Channels.PostMessage("score", message);
+                    {
+                        if (Hud.Hud.NumShotsLeft > 0)
+                        {
+                            // Post message to the score board.
+                            ScoreMessage message = new ScoreMessage() { ScoreIncrement = 10 };
+                            Channels.PostMessage("score", message);
 
-                        DuckHitMessage duckHitMessage = new DuckHitMessage() { State = DuckIndicatorStateEnum.Hit };
-                        Channels.PostMessage("duckhit", duckHitMessage);
+                            DuckHitMessage duckHitMessage = new DuckHitMessage() { State = DuckIndicatorStateEnum.Hit };
+                            Channels.PostMessage("duckhit", duckHitMessage);
 
-                        Channels.PostMessage("soundeffects", new SoundEffectMessage() { SoundEffectToPlay = "scream" });
-                        State = DuckStateEnum.Dead;
+                            Channels.PostMessage("soundeffects", new SoundEffectMessage() { SoundEffectToPlay = "scream" });
+                            State = DuckStateEnum.Dead;
+                        }
                     }
                     break;
 

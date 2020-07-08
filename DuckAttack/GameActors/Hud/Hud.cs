@@ -34,12 +34,14 @@ namespace ExoGame2D.DuckAttack.GameActors.Hud
         private const int MAX_NUMBER_DUCKS = 12;
         private DuckIndicator[] _duckIndicator = new DuckIndicator[MAX_NUMBER_DUCKS];
 
-        private BulletIndicator[] _bulletIndicator = new BulletIndicator[8];
+        private static BulletIndicator[] _bulletIndicator = new BulletIndicator[8];
 
 
         private int _numberDucksShot = 0;
 
+        private const int MAX_SHOTS = 8;
 
+        public static int NumShotsLeft = 8;
 
         public Hud(string name)
         {
@@ -56,17 +58,25 @@ namespace ExoGame2D.DuckAttack.GameActors.Hud
 
             int bullet_x_offset = 550;
 
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < MAX_SHOTS; i++)
             {
                 _bulletIndicator[i] = new BulletIndicator("BulletIndicator_" + i, bullet_x_offset);
 
                 bullet_x_offset += 30;
             }
+
+            ResetHud();
         }
 
         public void ResetHud()
         {
+            NumShotsLeft = 8;
             _numberDucksShot = 0;
+
+            for (int i = 0; i < MAX_SHOTS; i++)
+            {
+                _bulletIndicator[i].State = BulletIndicatorStateEnum.NotFired;
+            }
 
             for (int i = 0; i < MAX_NUMBER_DUCKS; i++)
             {
@@ -84,6 +94,15 @@ namespace ExoGame2D.DuckAttack.GameActors.Hud
         {
             _duckIndicator[_numberDucksShot].State = DuckIndicatorStateEnum.Miss;
             _numberDucksShot++;
+        }
+
+        public static void ShootBullet()
+        {
+            if (NumShotsLeft > 0)
+            {
+                _bulletIndicator[NumShotsLeft - 1].State = BulletIndicatorStateEnum.Fired;
+                NumShotsLeft--;
+            }
         }
 
         public string Name { get; set; }
@@ -105,8 +124,16 @@ namespace ExoGame2D.DuckAttack.GameActors.Hud
                         case DuckIndicatorStateEnum.Miss:
                             RegisterMiss();
                             break;
-
                     }
+                }
+            }
+
+            if (Channels.Exists("gunfired"))
+            {
+                var message = (BulletFiredMessage)Channels.RetrieveLatestMessage("gunfired");
+                if (message != null)
+                {
+                    ShootBullet();
                 }
             }
         }
@@ -124,7 +151,7 @@ namespace ExoGame2D.DuckAttack.GameActors.Hud
                 _duckIndicator[i].Draw(gameTime, Color.White);
             }
 
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < MAX_SHOTS; i++)
             {
                 _bulletIndicator[i].Draw(gameTime, Color.White);
             }

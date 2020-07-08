@@ -66,6 +66,11 @@ namespace ExoGame2D.DuckAttack.GameStates
             _scene.AddSpriteToLayer(RenderLayerEnum.LAYER4, _fps);
             _scene.AddSpriteToLayer(RenderLayerEnum.LAYER4, _score);
             _scene.AddSpriteToLayer(RenderLayerEnum.LAYER5, _crosshair);
+
+            Channels.AddNewChannel("score");
+            Channels.AddNewChannel("duckhit");
+            Channels.AddNewChannel("gunfired");
+
         }
 
         private void SetupLevel()

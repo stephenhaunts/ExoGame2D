@@ -201,6 +201,12 @@
 /processorParam:TextureFormat=Compressed
 /build:File.spritefont;headsup.spritefont
 
+#begin gunclick.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:gunclick.wav
+
 #begin images.jpeg
 /importer:TextureImporter
 /processor:TextureProcessor

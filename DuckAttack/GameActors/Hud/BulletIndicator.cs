@@ -36,7 +36,29 @@ namespace ExoGame2D.DuckAttack.GameActors.Hud
 
         private ISprite _currentSprite;
 
-        public BulletIndicatorStateEnum State;
+        BulletIndicatorStateEnum _state;
+        public BulletIndicatorStateEnum State
+        {
+            get
+            {
+                return _state;
+            }
+            set
+            {
+                _state = value;
+                switch (_state)
+                {
+                    case BulletIndicatorStateEnum.Fired:
+                        _currentSprite = _bulletFired;
+                        break;
+
+                    case BulletIndicatorStateEnum.NotFired:
+                        _currentSprite = _bulletNotFired;
+                        break;
+                }
+            }
+        }
+
         private int _x;
         private int _y;
 
@@ -44,10 +66,10 @@ namespace ExoGame2D.DuckAttack.GameActors.Hud
         {
             Name = name;
             _bulletFired = new Sprite();
-            _bulletFired.LoadContent("bullet");
+            _bulletFired.LoadContent("bulletspent");
 
             _bulletNotFired = new Sprite();
-            _bulletNotFired.LoadContent("bulletspent");
+            _bulletNotFired.LoadContent("bullet");
 
             _currentSprite = _bulletFired;
             State = BulletIndicatorStateEnum.NotFired;

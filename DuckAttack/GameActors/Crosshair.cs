@@ -22,9 +22,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 using System;
+using ExoGame2D.DuckAttack.Messages;
 using ExoGame2D.Interfaces;
 using ExoGame2D.Renderers;
 using Microsoft.Xna.Framework;
+using ExoGame2D.DuckAttack.GameActors.Hud;
 
 namespace ExoGame2D.DuckAttack.GameActors
 {
@@ -42,6 +44,7 @@ namespace ExoGame2D.DuckAttack.GameActors
             _crosshair.LoadContent("crosshair");
 
             SoundEffectPlayer.LoadSoundEffect("gunsound");
+            SoundEffectPlayer.LoadSoundEffect("gunclick");
         }
 
         public void Draw(GameTime gameTime)
@@ -66,8 +69,16 @@ namespace ExoGame2D.DuckAttack.GameActors
 
             if (InputHelper.MouseLeftButtonPressed())
             {
-               // SoundEffectPlayer.PlayOneShot("gunsound");
-                Channels.PostMessage("soundeffects", new SoundEffectMessage() { SoundEffectToPlay = "gunsound" });
+                if (Hud.Hud.NumShotsLeft > 0)
+                {
+                    Channels.PostMessage("gunfired", new BulletFiredMessage());
+                    Channels.PostMessage("soundeffects", new SoundEffectMessage() { SoundEffectToPlay = "gunsound" });
+                }
+                else
+                {
+                    Channels.PostMessage("soundeffects", new SoundEffectMessage() { SoundEffectToPlay = "gunclick" });
+
+                }
             }
         }
 
