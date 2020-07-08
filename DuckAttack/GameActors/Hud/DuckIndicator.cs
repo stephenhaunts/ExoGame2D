@@ -37,7 +37,8 @@ namespace ExoGame2D.DuckAttack.GameActors.Hud
 
         private ISprite _currentSprite;
 
-        public DuckIndicatorStateEnum State;
+        private DuckIndicatorStateEnum _state;
+
         private int _x;
         private int _y;
 
@@ -66,6 +67,33 @@ namespace ExoGame2D.DuckAttack.GameActors.Hud
 
             _duckshot.X = _x;
             _duckshot.Y = _y;
+        }
+
+        public DuckIndicatorStateEnum State
+        {
+            get
+            {
+                return _state;
+            }
+            set
+            {
+                _state = value;
+
+                switch(_state)
+                {
+                    case DuckIndicatorStateEnum.None:
+                        _currentSprite = _duckhud;
+                        break;
+
+                    case DuckIndicatorStateEnum.Miss:
+                        _currentSprite = _duckmiss;
+                        break;
+
+                    case DuckIndicatorStateEnum.Hit:
+                        _currentSprite = _duckshot;
+                        break;
+                }
+            }
         }
 
         public void Update(GameTime gameTime)

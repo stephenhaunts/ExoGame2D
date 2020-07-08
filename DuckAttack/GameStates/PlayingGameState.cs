@@ -62,12 +62,9 @@ namespace ExoGame2D.DuckAttack.GameStates
 
             _score = new ScoreBoard("score board");
 
-            _hud = new Hud("Hud");
-
             _scene.AddSpriteToLayer(RenderLayerEnum.LAYER1, _background);
             _scene.AddSpriteToLayer(RenderLayerEnum.LAYER4, _fps);
             _scene.AddSpriteToLayer(RenderLayerEnum.LAYER4, _score);
-            _scene.AddSpriteToLayer(RenderLayerEnum.LAYER4, _hud);
             _scene.AddSpriteToLayer(RenderLayerEnum.LAYER5, _crosshair);
         }
 
@@ -77,6 +74,10 @@ namespace ExoGame2D.DuckAttack.GameStates
             _duck2 = new Duck("duck2", 550, false, 7, -5);
             _duck3 = new Duck("duck3", 1200, true, -7, -5);
             _duck4 = new Duck("duck4", 1600, true, -7, -5);
+
+            _hud = new Hud("Hud");
+            
+            _scene.AddSpriteToLayer(RenderLayerEnum.LAYER4, _hud);
 
             _scene.AddSpriteToLayer(RenderLayerEnum.LAYER2, _duck);
             _scene.AddSpriteToLayer(RenderLayerEnum.LAYER2, _duck2);

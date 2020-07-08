@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 using System;
+using ExoGame2D.DuckAttack.Messages;
 using ExoGame2D.Interfaces;
 using Microsoft.Xna.Framework;
 
@@ -30,9 +31,14 @@ namespace ExoGame2D.DuckAttack.GameActors.Hud
 
     public class Hud : IRenderNode
     {
-        private DuckIndicator[] _duckIndicator = new DuckIndicator[12];
+        private const int MAX_NUMBER_DUCKS = 12;
+        private DuckIndicator[] _duckIndicator = new DuckIndicator[MAX_NUMBER_DUCKS];
 
         private BulletIndicator[] _bulletIndicator = new BulletIndicator[8];
+
+
+        private int _numberDucksShot = 0;
+
 
 
         public Hud(string name)
@@ -41,7 +47,7 @@ namespace ExoGame2D.DuckAttack.GameActors.Hud
 
             int x_offset = 1050;
 
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < MAX_NUMBER_DUCKS; i++)
             {
                 _duckIndicator[i] = new DuckIndicator("DuckIndicator_" + i, x_offset);
 
@@ -58,12 +64,53 @@ namespace ExoGame2D.DuckAttack.GameActors.Hud
             }
         }
 
+        public void ResetHud()
+        {
+            _numberDucksShot = 0;
+
+            for (int i = 0; i < MAX_NUMBER_DUCKS; i++)
+            {
+                _duckIndicator[i].State = DuckIndicatorStateEnum.None;
+            }
+        }
+
+        public void RegisterHit()
+        {
+            _duckIndicator[_numberDucksShot].State = DuckIndicatorStateEnum.Hit;
+            _numberDucksShot++;
+        }
+
+        public void RegisterMiss()
+        {
+            _duckIndicator[_numberDucksShot].State = DuckIndicatorStateEnum.Miss;
+            _numberDucksShot++;
+        }
+
         public string Name { get; set; }
 
         public void Update(GameTime gameTime)
         {
+            if (Channels.Exists("duckhit"))
+            {
+                var message = (DuckHitMessage)Channels.RetrieveLatestMessage("duckhit");
 
+                if (message != null)
+                {
+                    switch(message.State)
+                    {
+                        case DuckIndicatorStateEnum.Hit:
+                            RegisterHit();
+                            break;
+
+                        case DuckIndicatorStateEnum.Miss:
+                            RegisterMiss();
+                            break;
+
+                    }
+                }
+            }
         }
+
 
         public void Draw(GameTime gameTime)
         {
@@ -72,7 +119,7 @@ namespace ExoGame2D.DuckAttack.GameActors.Hud
 
         public void Draw(GameTime gameTime, Color tint)
         {
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < MAX_NUMBER_DUCKS; i++)
             {
                 _duckIndicator[i].Draw(gameTime, Color.White);
             }

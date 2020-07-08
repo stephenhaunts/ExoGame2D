@@ -27,6 +27,7 @@ using ExoGame2D.Renderers;
 using ExoGame2D.DuckAttack.Messages;
 using Microsoft.Xna.Framework;
 using System.Diagnostics;
+using ExoGame2D.DuckAttack.GameActors.Hud;
 
 namespace ExoGame2D.DuckAttack.GameActors
 {
@@ -74,6 +75,7 @@ namespace ExoGame2D.DuckAttack.GameActors
             State = DuckStateEnum.Start;
 
             Channels.AddNewChannel("score");
+            Channels.AddNewChannel("duckhit");
 
             SoundEffectPlayer.LoadSoundEffect("scream");
         }
@@ -110,6 +112,7 @@ namespace ExoGame2D.DuckAttack.GameActors
             State = DuckStateEnum.Start;
 
             Channels.AddNewChannel("score");
+            Channels.AddNewChannel("duckhit");
 
             SoundEffectPlayer.LoadSoundEffect("scream");
         }
@@ -146,6 +149,9 @@ namespace ExoGame2D.DuckAttack.GameActors
                         ScoreMessage message = new ScoreMessage() { ScoreIncrement = 10 };
                         Channels.PostMessage("score", message);
 
+                        DuckHitMessage duckHitMessage = new DuckHitMessage() { State = DuckIndicatorStateEnum.Hit };
+                        Channels.PostMessage("duckhit", duckHitMessage);
+
                         Channels.PostMessage("soundeffects", new SoundEffectMessage() { SoundEffectToPlay = "scream" });
                         State = DuckStateEnum.Dead;
                     }
@@ -166,6 +172,8 @@ namespace ExoGame2D.DuckAttack.GameActors
                     if (DuckOutOfBounds(_duck))
                     {
                         State = DuckStateEnum.Finished;
+                        DuckHitMessage duckHitMessage = new DuckHitMessage() { State = DuckIndicatorStateEnum.Miss };
+                        Channels.PostMessage("duckhit", duckHitMessage);
                     }
 
                     // Shoot the duck
@@ -174,6 +182,9 @@ namespace ExoGame2D.DuckAttack.GameActors
                         // Post message to the score board.
                         ScoreMessage message = new ScoreMessage() { ScoreIncrement = 10 };
                         Channels.PostMessage("score", message);
+
+                        DuckHitMessage duckHitMessage = new DuckHitMessage() { State = DuckIndicatorStateEnum.Hit };
+                        Channels.PostMessage("duckhit", duckHitMessage);
 
                         Channels.PostMessage("soundeffects", new SoundEffectMessage() { SoundEffectToPlay = "scream" });
                         State = DuckStateEnum.Dead;
