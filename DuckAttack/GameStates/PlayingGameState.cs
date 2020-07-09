@@ -109,6 +109,11 @@ namespace ExoGame2D.DuckAttack.GameStates
 
             _hud.ResetGun();
 
+            if (_hud.NumberOfDucksShot == 12)
+            {
+                _hud.ResetDuckCounter();
+            }
+
             _scene.AddSpriteToLayer(RenderLayerEnum.LAYER2, _duck);
             _scene.AddSpriteToLayer(RenderLayerEnum.LAYER2, _duck2);
             _scene.AddSpriteToLayer(RenderLayerEnum.LAYER2, _duck3);

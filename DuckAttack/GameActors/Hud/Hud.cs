@@ -34,7 +34,7 @@ namespace ExoGame2D.DuckAttack.GameActors.Hud
         private const int MAX_NUMBER_DUCKS = 12;
         private DuckIndicator[] _duckIndicator = new DuckIndicator[MAX_NUMBER_DUCKS];
         private static BulletIndicator[] _bulletIndicator = new BulletIndicator[8];
-        private int _numberDucksShot = 0;
+        public int NumberOfDucksShot { get; set; }
 
         private const int MAX_SHOTS = 4;
         public static int NumShotsLeft = 4;
@@ -42,7 +42,7 @@ namespace ExoGame2D.DuckAttack.GameActors.Hud
         public Hud(string name)
         {
             Name = name;
-
+            NumberOfDucksShot = 0;
             int x_offset = 1050;
 
             for (int i = 0; i < MAX_NUMBER_DUCKS; i++)
@@ -67,7 +67,7 @@ namespace ExoGame2D.DuckAttack.GameActors.Hud
         public void ResetHud()
         {
             NumShotsLeft = MAX_SHOTS;
-            _numberDucksShot = 0;
+            NumberOfDucksShot = 0;
 
             for (int i = 0; i < MAX_SHOTS; i++)
             {
@@ -90,16 +90,27 @@ namespace ExoGame2D.DuckAttack.GameActors.Hud
             }
         }
 
+        public void ResetDuckCounter()
+        {
+            NumberOfDucksShot = 0;
+
+            for (int i = 0; i < MAX_NUMBER_DUCKS; i++)
+            {
+                _duckIndicator[i].State = DuckIndicatorStateEnum.None;
+            }
+
+        }
+
         public void RegisterHit()
         {
-            _duckIndicator[_numberDucksShot].State = DuckIndicatorStateEnum.Hit;
-            _numberDucksShot++;
+            _duckIndicator[NumberOfDucksShot].State = DuckIndicatorStateEnum.Hit;
+            NumberOfDucksShot++;
         }
 
         public void RegisterMiss()
         {
-            _duckIndicator[_numberDucksShot].State = DuckIndicatorStateEnum.Miss;
-            _numberDucksShot++;
+            _duckIndicator[NumberOfDucksShot].State = DuckIndicatorStateEnum.Miss;
+            NumberOfDucksShot++;
         }
 
         public static void ShootBullet()
