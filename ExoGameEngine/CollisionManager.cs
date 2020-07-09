@@ -42,6 +42,14 @@ namespace ExoGame2D
             }
         }
 
+        public static void RemoveSpriteToCollisionManager(string name)
+        {
+            if (_spriteList.ContainsKey(name))
+            {
+                _spriteList.Remove(name);
+            }
+        }
+
         public static bool IsCollision(string source, string destination)
         {
             ISprite sourceSprite = _spriteList[source];

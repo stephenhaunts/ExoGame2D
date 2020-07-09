@@ -61,7 +61,9 @@ namespace ExoGame2D.DuckAttack.GameStates
             _fps.Location = new Vector2(40, Engine.ScaledViewPort.Y - 50);
 
             _score = new ScoreBoard("score board");
+            _hud = new Hud("Hud");
 
+            _scene.AddSpriteToLayer(RenderLayerEnum.LAYER4, _hud);
             _scene.AddSpriteToLayer(RenderLayerEnum.LAYER1, _background);
             _scene.AddSpriteToLayer(RenderLayerEnum.LAYER4, _fps);
             _scene.AddSpriteToLayer(RenderLayerEnum.LAYER4, _score);
@@ -80,15 +82,39 @@ namespace ExoGame2D.DuckAttack.GameStates
             _duck3 = new Duck("duck3", 1200, true, -7, -5);
             _duck4 = new Duck("duck4", 1600, true, -7, -5);
 
-            _hud = new Hud("Hud");
-            
-            _scene.AddSpriteToLayer(RenderLayerEnum.LAYER4, _hud);
+            _scene.AddSpriteToLayer(RenderLayerEnum.LAYER2, _duck);
+            _scene.AddSpriteToLayer(RenderLayerEnum.LAYER2, _duck2);
+            _scene.AddSpriteToLayer(RenderLayerEnum.LAYER2, _duck3);
+            _scene.AddSpriteToLayer(RenderLayerEnum.LAYER2, _duck4);
+
+            _gameClock.Start();
+        }
+
+        private void NextLevel()
+        {
+            _scene.RemoveSpriteFromLayer(RenderLayerEnum.LAYER2, _duck);
+            _scene.RemoveSpriteFromLayer(RenderLayerEnum.LAYER2, _duck2);
+            _scene.RemoveSpriteFromLayer(RenderLayerEnum.LAYER2, _duck3);
+            _scene.RemoveSpriteFromLayer(RenderLayerEnum.LAYER2, _duck4);
+
+            CollisionManager.RemoveSpriteToCollisionManager(_duck.Name);
+            CollisionManager.RemoveSpriteToCollisionManager(_duck2.Name);
+            CollisionManager.RemoveSpriteToCollisionManager(_duck3.Name);
+            CollisionManager.RemoveSpriteToCollisionManager(_duck4.Name);
+
+            _duck = new Duck("duck", 150, false, 7, -5);
+            _duck2 = new Duck("duck2", 550, false, 7, -5);
+            _duck3 = new Duck("duck3", 1200, true, -7, -5);
+            _duck4 = new Duck("duck4", 1600, true, -7, -5);
+
+            _hud.ResetGun();
 
             _scene.AddSpriteToLayer(RenderLayerEnum.LAYER2, _duck);
             _scene.AddSpriteToLayer(RenderLayerEnum.LAYER2, _duck2);
             _scene.AddSpriteToLayer(RenderLayerEnum.LAYER2, _duck3);
             _scene.AddSpriteToLayer(RenderLayerEnum.LAYER2, _duck4);
 
+            _gameClock.Reset();
             _gameClock.Start();
         }
 
@@ -123,6 +149,11 @@ namespace ExoGame2D.DuckAttack.GameStates
 
                 Engine.GameState.Register("MainMenu", new MainMenu());
                 Engine.GameState.ChangeState("MainMenu");
+            }
+
+            if (InputHelper.KeyPressed(Keys.N))
+            {
+                NextLevel();
             }
 
 

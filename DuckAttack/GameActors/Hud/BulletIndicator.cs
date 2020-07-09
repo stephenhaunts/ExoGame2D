@@ -62,6 +62,7 @@ namespace ExoGame2D.DuckAttack.GameActors.Hud
         private int _x;
         private int _y;
 
+
         public BulletIndicator(string name, int x)
         {
             Name = name;

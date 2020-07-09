@@ -35,8 +35,9 @@ namespace ExoGame2D.DuckAttack.GameActors.Hud
         private DuckIndicator[] _duckIndicator = new DuckIndicator[MAX_NUMBER_DUCKS];
         private static BulletIndicator[] _bulletIndicator = new BulletIndicator[8];
         private int _numberDucksShot = 0;
-        private const int MAX_SHOTS = 8;
-        public static int NumShotsLeft = 8;
+
+        private const int MAX_SHOTS = 4;
+        public static int NumShotsLeft = 4;
 
         public Hud(string name)
         {
@@ -65,7 +66,7 @@ namespace ExoGame2D.DuckAttack.GameActors.Hud
 
         public void ResetHud()
         {
-            NumShotsLeft = 8;
+            NumShotsLeft = MAX_SHOTS;
             _numberDucksShot = 0;
 
             for (int i = 0; i < MAX_SHOTS; i++)
@@ -76,6 +77,16 @@ namespace ExoGame2D.DuckAttack.GameActors.Hud
             for (int i = 0; i < MAX_NUMBER_DUCKS; i++)
             {
                 _duckIndicator[i].State = DuckIndicatorStateEnum.None;
+            }
+        }
+
+        public void ResetGun()
+        {
+            NumShotsLeft = MAX_SHOTS;
+            
+            for (int i = 0; i < MAX_SHOTS; i++)
+            {
+                _bulletIndicator[i].State = BulletIndicatorStateEnum.NotFired;
             }
         }
 
