@@ -30,6 +30,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using System.Diagnostics;
 using ExoGame2D.DuckAttack.GameActors.Hud;
+using ExoGame2D.DuckAttack.GameStates.Controller;
 
 namespace ExoGame2D.DuckAttack.GameStates
 {
@@ -46,14 +47,16 @@ namespace ExoGame2D.DuckAttack.GameStates
         private FontRender _fps;
         private readonly ScoreBoard _score;
         private Stopwatch _gameClock = new Stopwatch();
-
+        private LevelController _levelController;
         private Hud _hud;
+        private bool Round1Triggered = false;
+        private bool Round2Triggered = false;
+        private bool Round3Triggered = false;
+        private int _hudResetOffsetCounter = 0;
 
         public PlayingGameState()
         {
             _crosshair = new Crosshair();
-
-            SetupLevel();
 
             _background = new Background();
             _fps = new FontRender("fps counter");
@@ -62,6 +65,9 @@ namespace ExoGame2D.DuckAttack.GameStates
 
             _score = new ScoreBoard("score board");
             _hud = new Hud("Hud");
+            _levelController = new LevelController(new LevelBuilder().Levels);
+
+            NextLevel();
 
             _scene.AddSpriteToLayer(RenderLayerEnum.LAYER4, _hud);
             _scene.AddSpriteToLayer(RenderLayerEnum.LAYER1, _background);
@@ -72,26 +78,27 @@ namespace ExoGame2D.DuckAttack.GameStates
             Channels.AddNewChannel("score");
             Channels.AddNewChannel("duckhit");
             Channels.AddNewChannel("gunfired");
-
-        }
-
-        private void SetupLevel()
-        {
-            _duck = new Duck("duck", 150, false, 7, -5);
-            _duck2 = new Duck("duck2", 550, false, 7, -5);
-            _duck3 = new Duck("duck3", 1200, true, -7, -5);
-            _duck4 = new Duck("duck4", 1600, true, -7, -5);
-
-            _scene.AddSpriteToLayer(RenderLayerEnum.LAYER2, _duck);
-            _scene.AddSpriteToLayer(RenderLayerEnum.LAYER2, _duck2);
-            _scene.AddSpriteToLayer(RenderLayerEnum.LAYER2, _duck3);
-            _scene.AddSpriteToLayer(RenderLayerEnum.LAYER2, _duck4);
-
-            _gameClock.Start();
         }
 
         private void NextLevel()
         {
+            var level = _levelController.CurrentLevel;
+
+
+            if (_hud.NumberOfDucksShot == 12)
+            {
+                _hud.ResetDuckCounter();
+                _levelController.NextLevel();
+                level = _levelController.CurrentLevel;
+            }
+
+            level.Ducks.Shuffle();
+
+            _duck  = new Duck("duck", level.Ducks[0].StartX, level.Ducks[0].Flip, level.Ducks[0].HorizontalVelocity, level.Ducks[0].VerticalVelocity);
+            _duck2 = new Duck("duck2", level.Ducks[1].StartX, level.Ducks[1].Flip, level.Ducks[1].HorizontalVelocity, level.Ducks[1].VerticalVelocity);
+            _duck3 = new Duck("duck3", level.Ducks[2].StartX, level.Ducks[2].Flip, level.Ducks[2].HorizontalVelocity, level.Ducks[2].VerticalVelocity);
+            _duck4 = new Duck("duck4", level.Ducks[3].StartX, level.Ducks[3].Flip, level.Ducks[3].HorizontalVelocity, level.Ducks[3].VerticalVelocity);
+
             _scene.RemoveSpriteFromLayer(RenderLayerEnum.LAYER2, _duck);
             _scene.RemoveSpriteFromLayer(RenderLayerEnum.LAYER2, _duck2);
             _scene.RemoveSpriteFromLayer(RenderLayerEnum.LAYER2, _duck3);
@@ -102,18 +109,6 @@ namespace ExoGame2D.DuckAttack.GameStates
             CollisionManager.RemoveSpriteToCollisionManager(_duck3.Name);
             CollisionManager.RemoveSpriteToCollisionManager(_duck4.Name);
 
-            _duck = new Duck("duck", 150, false, 7, -5);
-            _duck2 = new Duck("duck2", 550, false, 7, -5);
-            _duck3 = new Duck("duck3", 1200, true, -7, -5);
-            _duck4 = new Duck("duck4", 1600, true, -7, -5);
-
-            _hud.ResetGun();
-
-            if (_hud.NumberOfDucksShot == 12)
-            {
-                _hud.ResetDuckCounter();
-            }
-
             _scene.AddSpriteToLayer(RenderLayerEnum.LAYER2, _duck);
             _scene.AddSpriteToLayer(RenderLayerEnum.LAYER2, _duck2);
             _scene.AddSpriteToLayer(RenderLayerEnum.LAYER2, _duck3);
@@ -121,12 +116,19 @@ namespace ExoGame2D.DuckAttack.GameStates
 
             _gameClock.Reset();
             _gameClock.Start();
+
+            Round1Triggered = false;
+            Round2Triggered = false;
+            Round3Triggered = false;
+
+            _hud.ResetGun();
         }
 
         public void Remove()
-        {         
+        {
             CollisionManager.RemoveAll();
         }
+
         public void Draw(GameTime gametime)
         {
             Draw(gametime, Color.White);
@@ -156,13 +158,44 @@ namespace ExoGame2D.DuckAttack.GameStates
                 Engine.GameState.ChangeState("MainMenu");
             }
 
-            if (InputHelper.KeyPressed(Keys.N))
+            if ((_hud.NumberOfDucksShot == 4) && (!Round1Triggered))
             {
-                NextLevel();
+                _hudResetOffsetCounter++;
+
+                if (_hudResetOffsetCounter == 50)
+                {
+                    NextLevel();
+                    Round1Triggered = true;
+                    _hudResetOffsetCounter = 0;
+                }
             }
 
+            if ((_hud.NumberOfDucksShot == 8) && (!Round2Triggered))
+            {
+                _hudResetOffsetCounter++;
+                if (_hudResetOffsetCounter == 50)
+                {
+                    NextLevel();
+                    Round2Triggered = true;
+                    _hudResetOffsetCounter = 0;
+                }
+            }
 
-            if (_gameClock.ElapsedMilliseconds > 1000)
+            if ((_hud.NumberOfDucksShot == 12) && (!Round3Triggered))
+            {
+                _hudResetOffsetCounter++;
+
+                if (_hudResetOffsetCounter == 50)
+                {
+                    NextLevel();
+                    Round3Triggered = true;
+                    _hudResetOffsetCounter = 0;
+                }
+            }
+
+            var level = _levelController.CurrentLevel;
+
+            if (_gameClock.ElapsedMilliseconds > level.Duck1StartTimerOffset)
             {
                 if (_duck.State == DuckStateEnum.Start)
                 {
@@ -170,7 +203,7 @@ namespace ExoGame2D.DuckAttack.GameStates
                 }
             }
 
-            if (_gameClock.ElapsedMilliseconds > 3000)
+            if (_gameClock.ElapsedMilliseconds > level.Duck2StartTimerOffset)
             {
                 if (_duck2.State == DuckStateEnum.Start)
                 {
@@ -178,7 +211,7 @@ namespace ExoGame2D.DuckAttack.GameStates
                 }
             }
 
-            if (_gameClock.ElapsedMilliseconds > 5000)
+            if (_gameClock.ElapsedMilliseconds > level.Duck3StartTimerOffset)
             {
                 if (_duck3.State == DuckStateEnum.Start)
                 {
@@ -186,7 +219,7 @@ namespace ExoGame2D.DuckAttack.GameStates
                 }
             }
 
-            if (_gameClock.ElapsedMilliseconds > 7000)
+            if (_gameClock.ElapsedMilliseconds > level.Duck4StartTimerOffset)
             {
                 if (_duck4.State == DuckStateEnum.Start)
                 {
