@@ -30,6 +30,7 @@ namespace ExoGame2D.DuckAttack.GameStates.Controller
     {
         private List<LevelDefinition> _levels = new List<LevelDefinition>();
         private int _currentLevelIndex = 0;
+        public int LevelNumber { get; private set; }
 
         public LevelDefinition CurrentLevel
         {
@@ -43,6 +44,7 @@ namespace ExoGame2D.DuckAttack.GameStates.Controller
         {
             _levels = levels;
             _currentLevelIndex = 0;
+            LevelNumber = 1;
         }
 
         public void ResetLevels()
@@ -53,6 +55,7 @@ namespace ExoGame2D.DuckAttack.GameStates.Controller
         public void NextLevel()
         {
             _currentLevelIndex++;
+            LevelNumber++;
 
             if (_currentLevelIndex >= _levels.Count)
             {

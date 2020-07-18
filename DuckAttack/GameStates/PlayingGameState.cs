@@ -53,6 +53,8 @@ namespace ExoGame2D.DuckAttack.GameStates
         private bool Round2Triggered = false;
         private bool Round3Triggered = false;
         private int _hudResetOffsetCounter = 0;
+        private BillBoard _billboard = new BillBoard(500, Color.Yellow);
+
 
         public PlayingGameState()
         {
@@ -69,15 +71,20 @@ namespace ExoGame2D.DuckAttack.GameStates
 
             NextLevel();
 
+
+
             _scene.AddSpriteToLayer(RenderLayerEnum.LAYER4, _hud);
             _scene.AddSpriteToLayer(RenderLayerEnum.LAYER1, _background);
             _scene.AddSpriteToLayer(RenderLayerEnum.LAYER4, _fps);
             _scene.AddSpriteToLayer(RenderLayerEnum.LAYER4, _score);
+            _scene.AddSpriteToLayer(RenderLayerEnum.LAYER4, _billboard);
             _scene.AddSpriteToLayer(RenderLayerEnum.LAYER5, _crosshair);
 
             Channels.AddNewChannel("score");
             Channels.AddNewChannel("duckhit");
             Channels.AddNewChannel("gunfired");
+
+            _billboard.StartBillBoard("Level " + _levelController.LevelNumber);
         }
 
         private void NextLevel()
@@ -90,6 +97,7 @@ namespace ExoGame2D.DuckAttack.GameStates
                 _hud.ResetDuckCounter();
                 _levelController.NextLevel();
                 level = _levelController.CurrentLevel;
+                _billboard.StartBillBoard("Level " + _levelController.LevelNumber);
             }
 
             level.Ducks.Shuffle();
