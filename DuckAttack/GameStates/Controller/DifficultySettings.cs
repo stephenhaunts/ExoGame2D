@@ -24,6 +24,13 @@ SOFTWARE.
 
 namespace ExoGame2D.DuckAttack.GameStates.Controller
 {
+    public enum DifficultyEnum
+    {
+        Easy = 0,
+        Medium = 1,
+        Hard = 2
+    }
+
     public static class DifficultySettings
     {
         public static DifficultyParameters Easy { get; private set; }
@@ -34,11 +41,27 @@ namespace ExoGame2D.DuckAttack.GameStates.Controller
 
         static DifficultySettings()
         {
-            Easy = new DifficultyParameters(true, 8, 0.0f);
-            Medium = new DifficultyParameters(true, 6, 0.2f);
-            Hard = new DifficultyParameters(false, 4, 0.4f);
+            Easy = new DifficultyParameters(true, 8, 0.0f, 8);
+            Medium = new DifficultyParameters(true, 6, 0.2f, 10);
+            Hard = new DifficultyParameters(false, 4, 0.4f, 12);
 
-            CurrentDifficulty = Medium;
-        }    
+            CurrentDifficulty = Easy;
+        }
+
+        public static void SetDifficulty(DifficultyEnum difficulty)
+        {
+            switch (difficulty)
+            {
+                case DifficultyEnum.Easy:
+                    CurrentDifficulty = Easy;
+                    break;
+                case DifficultyEnum.Medium:
+                    CurrentDifficulty = Medium;
+                    break;
+                case DifficultyEnum.Hard:
+                    CurrentDifficulty = Hard;
+                    break;
+            }
+        }
     }
 }

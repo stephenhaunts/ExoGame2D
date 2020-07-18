@@ -58,6 +58,8 @@ namespace ExoGame2D.DuckAttack.GameStates
 
         public PlayingGameState()
         {
+            DifficultySettings.SetDifficulty(DifficultyEnum.Hard);
+
             _crosshair = new Crosshair();
 
             _background = new Background();
@@ -70,8 +72,6 @@ namespace ExoGame2D.DuckAttack.GameStates
             _levelController = new LevelController(new LevelBuilder().Levels);
 
             NextLevel();
-
-
 
             _scene.AddSpriteToLayer(RenderLayerEnum.LAYER4, _hud);
             _scene.AddSpriteToLayer(RenderLayerEnum.LAYER1, _background);

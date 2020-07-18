@@ -29,12 +29,14 @@ namespace ExoGame2D.DuckAttack.GameStates.Controller
         public bool AimAssist { get; private set; }
         public int NumberBullets { get; private set; }
         public float SpeedDifference { get; private set; }
+        public int NumberDucksToPassLevel { get; private set; }
 
-        public DifficultyParameters(bool aimAssist, int numberBullets, float speedDifference)
+        public DifficultyParameters(bool aimAssist, int numberBullets, float speedDifference, int numberDucksToPassLevel)
         {
             AimAssist = aimAssist;
             NumberBullets = numberBullets;
             SpeedDifference = speedDifference;
+            NumberDucksToPassLevel = numberDucksToPassLevel;
         }
     }
 }

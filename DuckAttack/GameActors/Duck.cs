@@ -28,6 +28,7 @@ using ExoGame2D.DuckAttack.Messages;
 using Microsoft.Xna.Framework;
 using System.Diagnostics;
 using ExoGame2D.DuckAttack.GameActors.Hud;
+using ExoGame2D.DuckAttack.GameStates.Controller;
 
 namespace ExoGame2D.DuckAttack.GameActors
 {
@@ -155,22 +156,7 @@ namespace ExoGame2D.DuckAttack.GameActors
                         State = DuckStateEnum.FlyAway;
                     }
 
-                    // Shoot the duck
-                    if ((InputHelper.MouseLeftButtonPressed()) && (CollisionManager.IsCollision("crosshair", Name)))
-                    {
-                        if (Hud.Hud.NumShotsLeft > 0)
-                        {
-                            // Post message to the score board.
-                            ScoreMessage message = new ScoreMessage() { ScoreIncrement = 10 };
-                            Channels.PostMessage("score", message);
-
-                            DuckHitMessage duckHitMessage = new DuckHitMessage() { State = DuckIndicatorStateEnum.Hit };
-                            Channels.PostMessage("duckhit", duckHitMessage);
-
-                            Channels.PostMessage("soundeffects", new SoundEffectMessage() { SoundEffectToPlay = "death" });
-                            State = DuckStateEnum.Dead;
-                        }
-                    }
+                    ShootDuck();
                     break;
 
                 case DuckStateEnum.Dead:
@@ -192,22 +178,7 @@ namespace ExoGame2D.DuckAttack.GameActors
                         Channels.PostMessage("duckhit", duckHitMessage);
                     }
 
-                    // Shoot the duck
-                    if ((InputHelper.MouseLeftButtonPressed()) && (CollisionManager.IsCollision("crosshair", Name)))
-                    {
-                        if (Hud.Hud.NumShotsLeft > 0)
-                        {
-                            // Post message to the score board.
-                            ScoreMessage message = new ScoreMessage() { ScoreIncrement = 10 };
-                            Channels.PostMessage("score", message);
-
-                            DuckHitMessage duckHitMessage = new DuckHitMessage() { State = DuckIndicatorStateEnum.Hit };
-                            Channels.PostMessage("duckhit", duckHitMessage);
-
-                            Channels.PostMessage("soundeffects", new SoundEffectMessage() { SoundEffectToPlay = "death" });
-                            State = DuckStateEnum.Dead;
-                        }
-                    }
+                    ShootDuck();
                     break;
 
                 case DuckStateEnum.Dive:
@@ -231,6 +202,44 @@ namespace ExoGame2D.DuckAttack.GameActors
                     break;
 
             }
+        }
+
+        private void ShootDuck()
+        {
+            // Shoot the duck
+            if (GetCollision())
+            {
+                if (Hud.Hud.NumShotsLeft > 0)
+                {
+                    // Post message to the score board.
+                    ScoreMessage message = new ScoreMessage() { ScoreIncrement = 10 };
+                    Channels.PostMessage("score", message);
+
+                    DuckHitMessage duckHitMessage = new DuckHitMessage() { State = DuckIndicatorStateEnum.Hit };
+                    Channels.PostMessage("duckhit", duckHitMessage);
+
+                    Channels.PostMessage("soundeffects", new SoundEffectMessage() { SoundEffectToPlay = "death" });
+                    State = DuckStateEnum.Dead;
+                }
+            }
+        }
+
+        private bool GetCollision()
+        {
+            switch (DifficultySettings.CurrentDifficulty.AimAssist)
+            {
+                case true:
+                    if (InputHelper.MouseLeftButtonPressed() && (CollisionManager.IsCollision("crosshair", Name)))
+                        return true;
+                    break;
+
+                case false:
+                    if (InputHelper.MouseLeftButtonPressed() && (CollisionManager.IsPerPixelCollision("crosshair", Name)))
+                        return true;
+                    break;
+            }
+            
+            return false;
         }
 
         private bool DuckOutOfBounds(ISprite sprite)
