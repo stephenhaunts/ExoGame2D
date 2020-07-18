@@ -52,49 +52,441 @@ namespace ExoGame2D.DuckAttack.GameStates.Controller
         public LevelBuilder()
         {
             Level1();
+            Level2();
+            Level3();
+            Level4();
+            Level5();
+            Level6();
+            Level7();
+            Level8();
+            Level9();
         }
-
-
 
         private void Level1()
         {
             DuckDefinition duck1 = new DuckDefinition()
             {
                 StartX = 150,
-                HorizontalVelocity = 7,
-                VerticalVelocity = -5,              
+                HorizontalVelocity = 6.0f,
+                VerticalVelocity = -4.0f,
                 Flip = false
             };
 
             DuckDefinition duck2 = new DuckDefinition()
             {
                 StartX = 550,
-                HorizontalVelocity = 7,
-                VerticalVelocity = -5,
+                HorizontalVelocity = 6.0f,
+                VerticalVelocity = -4.0f,
                 Flip = false
             };
 
             DuckDefinition duck3 = new DuckDefinition()
             {
                 StartX = 1200,
-                HorizontalVelocity = -7,
-                VerticalVelocity = -5,
+                HorizontalVelocity = -6.0f,
+                VerticalVelocity = -4.0f,
                 Flip = true
             };
 
             DuckDefinition duck4 = new DuckDefinition()
             {
                 StartX = 1600,
-                HorizontalVelocity = -7,
-                VerticalVelocity = -5,
+                HorizontalVelocity = -6.0f,
+                VerticalVelocity = -4.0f,
                 Flip = true
             };
 
-            LevelDefinition level = new LevelDefinition(duck1, duck2, duck3, duck4);
-            level.Duck1StartTimerOffset = 2000;
-            level.Duck2StartTimerOffset = 5000;
-            level.Duck3StartTimerOffset = 7000;
-            level.Duck4StartTimerOffset = 9000;
+            LevelDefinition level = new LevelDefinition(duck1, duck2, duck3, duck4)
+            {
+                Duck1StartTimerOffset = 2000,
+                Duck2StartTimerOffset = 5000,
+                Duck3StartTimerOffset = 8000,
+                Duck4StartTimerOffset = 10000
+            };
+
+
+            Levels.Add(level);
+
+            Levels.Shuffle();
+        }
+
+        private void Level2()
+        {
+            DuckDefinition duck1 = new DuckDefinition()
+            {
+                StartX = 150,
+                HorizontalVelocity = 7.0f,
+                VerticalVelocity = -5.0f,              
+                Flip = false
+            };
+
+            DuckDefinition duck2 = new DuckDefinition()
+            {
+                StartX = 550,
+                HorizontalVelocity = 7.0f,
+                VerticalVelocity = -5.0f,
+                Flip = false
+            };
+
+            DuckDefinition duck3 = new DuckDefinition()
+            {
+                StartX = 1200,
+                HorizontalVelocity = -7.0f,
+                VerticalVelocity = -5.0f,
+                Flip = true
+            };
+
+            DuckDefinition duck4 = new DuckDefinition()
+            {
+                StartX = 1600,
+                HorizontalVelocity = -7.0f,
+                VerticalVelocity = -5.0f,
+                Flip = true
+            };
+
+            LevelDefinition level = new LevelDefinition(duck1, duck2, duck3, duck4)
+            {
+                Duck1StartTimerOffset = 2000,
+                Duck2StartTimerOffset = 4000,
+                Duck3StartTimerOffset = 7000,
+                Duck4StartTimerOffset = 9000
+            };
+
+
+            Levels.Add(level);
+
+            Levels.Shuffle();
+        }
+
+        private void Level3()
+        {
+            DuckDefinition duck1 = new DuckDefinition()
+            {
+                StartX = 200,
+                HorizontalVelocity = 7.0f,
+                VerticalVelocity = -5.0f,
+                Flip = false
+            };
+
+            DuckDefinition duck2 = new DuckDefinition()
+            {
+                StartX = 330,
+                HorizontalVelocity = 7.0f,
+                VerticalVelocity = -5.0f,
+                Flip = false
+            };
+
+            DuckDefinition duck3 = new DuckDefinition()
+            {
+                StartX = 1000,
+                HorizontalVelocity = -7.0f,
+                VerticalVelocity = -5.0f,
+                Flip = true
+            };
+
+            DuckDefinition duck4 = new DuckDefinition()
+            {
+                StartX = 1700,
+                HorizontalVelocity = -7.0f,
+                VerticalVelocity = -5.0f,
+                Flip = true
+            };
+
+            LevelDefinition level = new LevelDefinition(duck1, duck2, duck3, duck4)
+            {
+                Duck1StartTimerOffset = 2000,
+                Duck2StartTimerOffset = 5000,
+                Duck3StartTimerOffset = 6000,
+                Duck4StartTimerOffset = 8000
+            };
+
+
+            Levels.Add(level);
+
+            Levels.Shuffle();
+        }
+
+        private void Level4()
+        {
+            DuckDefinition duck1 = new DuckDefinition()
+            {
+                StartX = 200,
+                HorizontalVelocity = 8.0f,
+                VerticalVelocity = -5.0f,
+                Flip = false
+            };
+
+            DuckDefinition duck2 = new DuckDefinition()
+            {
+                StartX = 330,
+                HorizontalVelocity = 8.0f,
+                VerticalVelocity = -5.0f,
+                Flip = false
+            };
+
+            DuckDefinition duck3 = new DuckDefinition()
+            {
+                StartX = 1000,
+                HorizontalVelocity = -8.0f,
+                VerticalVelocity = -5.0f,
+                Flip = true
+            };
+
+            DuckDefinition duck4 = new DuckDefinition()
+            {
+                StartX = 1700,
+                HorizontalVelocity = -8.0f,
+                VerticalVelocity = -5.0f,
+                Flip = true
+            };
+
+            LevelDefinition level = new LevelDefinition(duck1, duck2, duck3, duck4)
+            {
+                Duck1StartTimerOffset = 2000,
+                Duck2StartTimerOffset = 3000,
+                Duck3StartTimerOffset = 5000,
+                Duck4StartTimerOffset = 7000
+            };
+
+
+            Levels.Add(level);
+
+            Levels.Shuffle();
+        }
+
+        private void Level5()
+        {
+            DuckDefinition duck1 = new DuckDefinition()
+            {
+                StartX = 200,
+                HorizontalVelocity = 8.0f,
+                VerticalVelocity = -6.0f,
+                Flip = false
+            };
+
+            DuckDefinition duck2 = new DuckDefinition()
+            {
+                StartX = 330,
+                HorizontalVelocity = 8.0f,
+                VerticalVelocity = -6.0f,
+                Flip = false
+            };
+
+            DuckDefinition duck3 = new DuckDefinition()
+            {
+                StartX = 1000,
+                HorizontalVelocity = -8.0f,
+                VerticalVelocity = -6.0f,
+                Flip = true
+            };
+
+            DuckDefinition duck4 = new DuckDefinition()
+            {
+                StartX = 1700,
+                HorizontalVelocity = -8.0f,
+                VerticalVelocity = -6.0f,
+                Flip = true
+            };
+
+            LevelDefinition level = new LevelDefinition(duck1, duck2, duck3, duck4)
+            {
+                Duck1StartTimerOffset = 2000,
+                Duck2StartTimerOffset = 3000,
+                Duck3StartTimerOffset = 5000,
+                Duck4StartTimerOffset = 7000
+            };
+
+
+            Levels.Add(level);
+
+            Levels.Shuffle();
+        }
+
+        private void Level6()
+        {
+            DuckDefinition duck1 = new DuckDefinition()
+            {
+                StartX = 200,
+                HorizontalVelocity = 8.5f,
+                VerticalVelocity = -6.0f,
+                Flip = false
+            };
+
+            DuckDefinition duck2 = new DuckDefinition()
+            {
+                StartX = 330,
+                HorizontalVelocity = 8.5f,
+                VerticalVelocity = -6.0f,
+                Flip = false
+            };
+
+            DuckDefinition duck3 = new DuckDefinition()
+            {
+                StartX = 1000,
+                HorizontalVelocity = -8.5f,
+                VerticalVelocity = -6.0f,
+                Flip = true
+            };
+
+            DuckDefinition duck4 = new DuckDefinition()
+            {
+                StartX = 1700,
+                HorizontalVelocity = -8.5f,
+                VerticalVelocity = -6.0f,
+                Flip = true
+            };
+
+            LevelDefinition level = new LevelDefinition(duck1, duck2, duck3, duck4)
+            {
+                Duck1StartTimerOffset = 2000,
+                Duck2StartTimerOffset = 3000,
+                Duck3StartTimerOffset = 5000,
+                Duck4StartTimerOffset = 6000
+            };
+
+
+            Levels.Add(level);
+
+            Levels.Shuffle();
+        }
+
+        private void Level7()
+        {
+            DuckDefinition duck1 = new DuckDefinition()
+            {
+                StartX = 200,
+                HorizontalVelocity = 8.5f,
+                VerticalVelocity = -6.5f,
+                Flip = false
+            };
+
+            DuckDefinition duck2 = new DuckDefinition()
+            {
+                StartX = 330,
+                HorizontalVelocity = 8.5f,
+                VerticalVelocity = -6.5f,
+                Flip = false
+            };
+
+            DuckDefinition duck3 = new DuckDefinition()
+            {
+                StartX = 1000,
+                HorizontalVelocity = -8.5f,
+                VerticalVelocity = -6.5f,
+                Flip = true
+            };
+
+            DuckDefinition duck4 = new DuckDefinition()
+            {
+                StartX = 1700,
+                HorizontalVelocity = -8.5f,
+                VerticalVelocity = -6.5f,
+                Flip = true
+            };
+
+            LevelDefinition level = new LevelDefinition(duck1, duck2, duck3, duck4)
+            {
+                Duck1StartTimerOffset = 2000,
+                Duck2StartTimerOffset = 3000,
+                Duck3StartTimerOffset = 5000,
+                Duck4StartTimerOffset = 6000
+            };
+
+
+            Levels.Add(level);
+
+            Levels.Shuffle();
+        }
+
+        private void Level8()
+        {
+            DuckDefinition duck1 = new DuckDefinition()
+            {
+                StartX = 200,
+                HorizontalVelocity = 9.5f,
+                VerticalVelocity = -7.5f,
+                Flip = false
+            };
+
+            DuckDefinition duck2 = new DuckDefinition()
+            {
+                StartX = 330,
+                HorizontalVelocity = 9.5f,
+                VerticalVelocity = -7.5f,
+                Flip = false
+            };
+
+            DuckDefinition duck3 = new DuckDefinition()
+            {
+                StartX = 1000,
+                HorizontalVelocity = -9.5f,
+                VerticalVelocity = -7.5f,
+                Flip = true
+            };
+
+            DuckDefinition duck4 = new DuckDefinition()
+            {
+                StartX = 1700,
+                HorizontalVelocity = -9.5f,
+                VerticalVelocity = -7.5f,
+                Flip = true
+            };
+
+            LevelDefinition level = new LevelDefinition(duck1, duck2, duck3, duck4)
+            {
+                Duck1StartTimerOffset = 2000,
+                Duck2StartTimerOffset = 3000,
+                Duck3StartTimerOffset = 5000,
+                Duck4StartTimerOffset = 6000
+            };
+
+
+            Levels.Add(level);
+
+            Levels.Shuffle();
+        }
+
+        private void Level9()
+        {
+            DuckDefinition duck1 = new DuckDefinition()
+            {
+                StartX = 200,
+                HorizontalVelocity = 10.0f,
+                VerticalVelocity = -8.5f,
+                Flip = false
+            };
+
+            DuckDefinition duck2 = new DuckDefinition()
+            {
+                StartX = 330,
+                HorizontalVelocity = 10.0f,
+                VerticalVelocity = -8.5f,
+                Flip = false
+            };
+
+            DuckDefinition duck3 = new DuckDefinition()
+            {
+                StartX = 1000,
+                HorizontalVelocity = 10.0f,
+                VerticalVelocity = -8.5f,
+                Flip = true
+            };
+
+            DuckDefinition duck4 = new DuckDefinition()
+            {
+                StartX = 1700,
+                HorizontalVelocity = 10.0f,
+                VerticalVelocity = -8.5f,
+                Flip = true
+            };
+
+            LevelDefinition level = new LevelDefinition(duck1, duck2, duck3, duck4)
+            {
+                Duck1StartTimerOffset = 2000,
+                Duck2StartTimerOffset = 3000,
+                Duck3StartTimerOffset = 4000,
+                Duck4StartTimerOffset = 5000
+            };
 
 
             Levels.Add(level);

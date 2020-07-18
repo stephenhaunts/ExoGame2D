@@ -29,8 +29,8 @@ namespace ExoGame2D.DuckAttack.GameStates.Controller
     public class DuckDefinition
     {
         public int StartX { get; set; }
-        public int HorizontalVelocity { get; set; }
-        public int VerticalVelocity { get; set; }
+        public float HorizontalVelocity { get; set; }
+        public float VerticalVelocity { get; set; }
         public bool Flip { get; set; }
     }
 

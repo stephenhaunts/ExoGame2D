@@ -58,7 +58,7 @@ namespace ExoGame2D.DuckAttack.GameStates
 
         public PlayingGameState()
         {
-            DifficultySettings.SetDifficulty(DifficultyEnum.Hard);
+            DifficultySettings.SetDifficulty(DifficultyEnum.Easy);
 
             _crosshair = new Crosshair();
 
