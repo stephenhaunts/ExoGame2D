@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 using System;
+using ExoGame2D.DuckAttack.GameStates.Controller;
 using ExoGame2D.DuckAttack.Messages;
 using ExoGame2D.Interfaces;
 using Microsoft.Xna.Framework;
@@ -36,8 +37,8 @@ namespace ExoGame2D.DuckAttack.GameActors.Hud
         private static BulletIndicator[] _bulletIndicator = new BulletIndicator[8];
         public int NumberOfDucksShot { get; set; }
 
-        private const int MAX_SHOTS = 8;
-        public static int NumShotsLeft = 8;
+        private int MAX_SHOTS = DifficultySettings.CurrentDifficulty.NumberBullets;
+        public static int NumShotsLeft = DifficultySettings.CurrentDifficulty.NumberBullets;
 
         public Hud(string name)
         {
