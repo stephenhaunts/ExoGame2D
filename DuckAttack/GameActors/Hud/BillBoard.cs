@@ -90,7 +90,7 @@ namespace ExoGame2D.DuckAttack.GameActors.Hud
                         _counter.Start();
                     }
 
-                    if (_counter.ElapsedMilliseconds == 1500)
+                    if (_counter.ElapsedMilliseconds >= 1500)
                     {
                         _state = BillboardStateEnum.Rise;
                         _counter.Stop();
