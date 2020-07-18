@@ -42,8 +42,8 @@ namespace ExoGame2D.DuckAttack.GameStates.Controller
         static DifficultySettings()
         {
             Easy = new DifficultyParameters(true, 8, 0.0f, 8);
-            Medium = new DifficultyParameters(true, 6, 0.2f, 10);
-            Hard = new DifficultyParameters(false, 4, 0.4f, 12);
+            Medium = new DifficultyParameters(true, 6, 0.6f, 10);
+            Hard = new DifficultyParameters(false, 4, 1.2f, 12);
 
             CurrentDifficulty = Easy;
         }

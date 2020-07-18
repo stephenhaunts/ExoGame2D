@@ -82,7 +82,7 @@ namespace ExoGame2D.DuckAttack.GameActors
         }
 
 
-        public Duck(string name, int x, bool flip, int vx, int vy)
+        public Duck(string name, int x, bool flip, float vx, float vy)
         {
             Name = name;
 
@@ -101,6 +101,24 @@ namespace ExoGame2D.DuckAttack.GameActors
             _duck.LoadFrameTexture("DuckFrame1");
             _duck.LoadFrameTexture("DuckFrame2");
             _duck.LoadFrameTexture("DuckFrame3");
+
+            if (vx > 0)
+            {
+                vx += DifficultySettings.CurrentDifficulty.SpeedDifference;
+            }
+            else
+            {
+                vx -= DifficultySettings.CurrentDifficulty.SpeedDifference;
+            }
+
+            if (vy > 0)
+            {
+                vy += DifficultySettings.CurrentDifficulty.SpeedDifference;
+            }
+            else
+            {
+                vy -= DifficultySettings.CurrentDifficulty.SpeedDifference;
+            }
 
             _duck.Velocity = new Vector2(vx, vy);
             _duck.Flip = flip;
